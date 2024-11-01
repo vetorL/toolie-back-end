@@ -23,4 +23,9 @@ public class Usuario {
     @Pattern(regexp = "[\\p{IsLatin}\\p{Digit}]*", message = "Nome deve possuir apenas caracteres alfanuméricos")
     private final String nome;
 
+    @NotBlank(message = "Email é obrigatório")
+    @Size(min = 6, max = 254, message = "Email deve ter entre 6 e 254 caracteres")
+    @Column(unique = true, nullable = false)
+    private final String email;
+
 }
