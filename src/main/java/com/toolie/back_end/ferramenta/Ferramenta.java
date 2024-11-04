@@ -18,7 +18,7 @@ public class Ferramenta {
 
     @ManyToOne
     @JoinColumn(name = "proprietario_id")
-    private Usuario proprietario;
+    private final Usuario proprietario;
 
     private final String tipoFerramenta;
 
