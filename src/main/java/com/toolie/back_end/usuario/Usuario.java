@@ -28,6 +28,14 @@ public class Usuario {
     @Column(unique = true, nullable = false)
     private final String email;
 
+    private final String telefone;
+
+    private final String endereco;
+
+    private final String foto_documento_URL;
+
+    private final StatusConta statusConta = StatusConta.VERIFICACAO_PENDENTE;
+
     private final boolean flag_locador = false;
 
     private final boolean flag_locatario = false;
