@@ -11,6 +11,6 @@ Para a criação dessa API nos baseamos no seguinte esquema:
  
 ### *Entidade Usuario*
 
-- /usuarios
+- GET /usuarios
 
 Retorna todos os usuarios do banco de dados, incluindo todos os seus campos.
