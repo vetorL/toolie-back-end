@@ -1,5 +1,7 @@
 package com.toolie.back_end.config;
 
+import com.toolie.back_end.ferramenta.Ferramenta;
+import com.toolie.back_end.ferramenta.FerramentaRepository;
 import com.toolie.back_end.usuario.Usuario;
 import com.toolie.back_end.usuario.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -13,9 +15,15 @@ import java.util.List;
 public class DevelopmentConfig {
 
     @Bean
-    public CommandLineRunner dataLoader(UsuarioRepository usuarioRepository) {
+    public CommandLineRunner dataLoader(UsuarioRepository usuarioRepository, FerramentaRepository ferramentaRepository) {
         return args -> {
+
+            Usuario proprietario1 = new Usuario("João", "joao@gmail.com", "1234567890", "Endereço Proprietario", "fotoURL");
+            Usuario proprietario2 = new Usuario("Yoel", "yoel@gmail.com", "12345678490", "Endereço Proprietario4", "fotoURL4");
+
             List<Usuario> usuarios = Arrays.asList(
+                    proprietario1,
+                    proprietario2,
                     new Usuario("Jorge", "jorge@gmail.com", "1234567890", "Endereço 1", "url1"),
                     new Usuario("Maria", "maria@gmail.com", "2345678901", "Endereço 2", "url2"),
                     new Usuario("Pedro", "pedro@gmail.com", "3456789012", "Endereço 3", "url3"),
@@ -29,6 +37,33 @@ public class DevelopmentConfig {
                     );
 
             usuarioRepository.saveAll(usuarios);
+
+            List<Ferramenta> ferramentas = Arrays.asList(
+                    new Ferramenta(
+                            proprietario1,
+                            "Martelo",
+                            "Usado",
+                            "Martelo de aço de 500g",
+                            "Disponível",
+                            "Centro",
+                            "fotosURL1",
+                            "Condições adequadas",
+                            "Retirada no local"
+                    ),
+                    new Ferramenta(
+                            proprietario2,
+                            "Chave de fenda",
+                            "Novo",
+                            "Chave de fenda Philips",
+                            "Indisponível",
+                            "Zona Sul",
+                            "fotosURL2",
+                            "Condições novas",
+                            "Entrega disponível"
+                    )
+            );
+
+            ferramentaRepository.saveAll(ferramentas);
         };
     }
 
