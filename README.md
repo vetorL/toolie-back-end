@@ -29,3 +29,8 @@ Retorna todas as ferramentas do banco de dados, incluindo todos os seus campos.
 
 Retorna os dados da ferramenta com o id especificado. 
 Caso o id especificado não exista no banco de dados o código 404 é retornado.
+
+- GET /ferramenta/?q=exemplo+de+query
+
+Mecanismo de pesquisa simples de ferramentas.
+Retorna todas as ferramentas do banco de dados que correspondem com a query.
