@@ -14,3 +14,7 @@ Para a criação dessa API nos baseamos no seguinte esquema:
 - GET /usuarios
 
 Retorna todos os usuarios do banco de dados, incluindo todos os seus campos.
+
+- GET /usuarios/{id}
+
+Retorna os dados do usuário com o id especificado

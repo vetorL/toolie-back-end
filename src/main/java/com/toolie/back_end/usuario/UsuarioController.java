@@ -1,6 +1,7 @@
 package com.toolie.back_end.usuario;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,11 @@ public class UsuarioController {
     @GetMapping
     public Iterable<Usuario> getAll() {
         return usuarioRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Usuario getById(@PathVariable long id) {
+        return usuarioRepository.findById(id).orElse(null);
     }
 
 }
