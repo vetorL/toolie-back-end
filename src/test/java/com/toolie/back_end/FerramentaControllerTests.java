@@ -13,8 +13,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -64,7 +66,7 @@ public class FerramentaControllerTests {
 
     @Test
     public void testGetFerramentas() throws Exception {
-        Mockito.when(ferramentaRepository.findAll()).thenReturn(Arrays.asList(ferramenta1, ferramenta2));
+        when(ferramentaRepository.findAll()).thenReturn(Arrays.asList(ferramenta1, ferramenta2));
 
         mockMvc.perform(get("/ferramentas"))
                 .andExpect(status().isOk())
@@ -95,7 +97,7 @@ public class FerramentaControllerTests {
     @Test
     public void testGetFerramentaByIdFound() throws Exception {
         // Mock the repository to return the ferramenta when the ID is 1
-        Mockito.when(ferramentaRepository.findById(1L)).thenReturn(Optional.of(ferramenta1));
+        when(ferramentaRepository.findById(1L)).thenReturn(Optional.of(ferramenta1));
 
         mockMvc.perform(get("/ferramentas/1"))
                 .andExpect(status().isOk())
@@ -114,9 +116,41 @@ public class FerramentaControllerTests {
     @Test
     public void testGetFerramentaByIdNotFound() throws Exception {
         // Mock the repository to return an empty Optional when the ID is not found
-        Mockito.when(ferramentaRepository.findById(9999L)).thenReturn(Optional.empty());
+        when(ferramentaRepository.findById(9999L)).thenReturn(Optional.empty());
 
         mockMvc.perform(get("/ferramentas/9999"))
                 .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void testGetFerramentasByTipoFerramentaWithQuery() throws Exception {
+        // Given
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", "Disponível", "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", "Disponível", "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
+        List<Ferramenta> ferramentas = Arrays.asList(ferramenta1);
+
+        when(ferramentaRepository.searchByTipoFerramenta("Drill")).thenReturn(ferramentas);
+
+        // When & Then
+        mockMvc.perform(get("/ferramentas").param("q", "Drill"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].tipoFerramenta").value("Drill"))
+                .andExpect(jsonPath("$[0].descricao").value("Powerful drill"));
+    }
+
+    @Test
+    void testGetFerramentasByTipoFerramentaWithoutQuery() throws Exception {
+        // Given
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", "Disponível", "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", "Disponível", "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
+        List<Ferramenta> ferramentas = Arrays.asList(ferramenta1, ferramenta2);
+
+        when(ferramentaRepository.findAll()).thenReturn(ferramentas);
+
+        // When & Then
+        mockMvc.perform(get("/ferramentas"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].tipoFerramenta").value("Drill"))
+                .andExpect(jsonPath("$[1].tipoFerramenta").value("Hammer"));
     }
 }
