@@ -22,13 +22,18 @@ public class Ferramenta {
 
     private final String tipoFerramenta;
 
-    // Estado de uso
-    private final String estado;
+    private final String estadoDeUso;
 
     private final String descricao;
 
     private final String disponibilidade;
 
     private final String localizacao;
+
+    private final String fotosURL;
+
+    private final String condicoesDeUso;
+
+    private final String opcoesDeEntrega;
 
 }
