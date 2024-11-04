@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -89,5 +90,33 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$[1].opcoesDeEntrega").value("Entrega disponível"))
                 .andExpect(jsonPath("$[1].proprietario.nome").value("João"))
                 .andExpect(jsonPath("$[1].proprietario.email").value("joao@gmail.com"));
+    }
+
+    @Test
+    public void testGetFerramentaByIdFound() throws Exception {
+        // Mock the repository to return the ferramenta when the ID is 1
+        Mockito.when(ferramentaRepository.findById(1L)).thenReturn(Optional.of(ferramenta1));
+
+        mockMvc.perform(get("/ferramentas/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.tipoFerramenta").value("Martelo"))
+                .andExpect(jsonPath("$.estadoDeUso").value("Usado"))
+                .andExpect(jsonPath("$.descricao").value("Martelo de aço de 500g"))
+                .andExpect(jsonPath("$.disponibilidade").value("Disponível"))
+                .andExpect(jsonPath("$.localizacao").value("Centro"))
+                .andExpect(jsonPath("$.fotosURL").value("fotosURL1"))
+                .andExpect(jsonPath("$.condicoesDeUso").value("Condições adequadas"))
+                .andExpect(jsonPath("$.opcoesDeEntrega").value("Retirada no local"))
+                .andExpect(jsonPath("$.proprietario.nome").value("João"))
+                .andExpect(jsonPath("$.proprietario.email").value("joao@gmail.com"));
+    }
+
+    @Test
+    public void testGetFerramentaByIdNotFound() throws Exception {
+        // Mock the repository to return an empty Optional when the ID is not found
+        Mockito.when(ferramentaRepository.findById(9999L)).thenReturn(Optional.empty());
+
+        mockMvc.perform(get("/ferramentas/9999"))
+                .andExpect(status().isNotFound());
     }
 }
