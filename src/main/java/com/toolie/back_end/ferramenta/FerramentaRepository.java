@@ -11,4 +11,6 @@ public interface FerramentaRepository extends CrudRepository<Ferramenta, Long> {
     @Query("SELECT f FROM Ferramenta f WHERE LOWER(f.tipoFerramenta) LIKE LOWER(CONCAT('%', :tipoFerramenta, '%'))")
     List<Ferramenta> searchByTipoFerramenta(@Param("tipoFerramenta") String tipoFerramenta);
 
+    List<Ferramenta> findByProprietarioId(Long id);
+
 }

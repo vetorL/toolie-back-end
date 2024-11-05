@@ -153,4 +153,40 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$[0].tipoFerramenta").value("Drill"))
                 .andExpect(jsonPath("$[1].tipoFerramenta").value("Hammer"));
     }
+
+    @Test
+    void testGetFerramentasByUserIdWithResults() throws Exception {
+        // Given
+        List<Ferramenta> ferramentas = Arrays.asList(ferramenta1, ferramenta2);
+        when(ferramentaRepository.findByProprietarioId(proprietario.getId())).thenReturn(ferramentas);
+
+        // When & Then
+        mockMvc.perform(get("/ferramentas").param("proprietarioId", String.valueOf(proprietario.getId())))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].tipoFerramenta").value("Martelo"))
+                .andExpect(jsonPath("$[1].tipoFerramenta").value("Chave de fenda"))
+                .andExpect(jsonPath("$[0].proprietario.nome").value("João"))
+                .andExpect(jsonPath("$[1].proprietario.nome").value("João"));
+    }
+
+    @Test
+    void testGetFerramentasByUserIdNoResults() throws Exception {
+        // Given
+        when(ferramentaRepository.findByProprietarioId(proprietario.getId())).thenReturn(List.of());
+
+        // When & Then
+        mockMvc.perform(get("/ferramentas").param("proprietarioId", String.valueOf(proprietario.getId())))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(0)); // Expecting an empty array
+    }
+
+    @Test
+    void testGetFerramentasByUserIdInvalidId() throws Exception {
+        // Given an invalid user ID
+        String invalidProprietarioId = "abc"; // non-numeric string
+
+        // When & Then
+        mockMvc.perform(get("/ferramentas").param("proprietarioId", invalidProprietarioId))
+                .andExpect(status().isBadRequest()); // Expecting Bad Request due to parse error
+    }
 }

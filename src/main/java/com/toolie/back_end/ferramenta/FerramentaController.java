@@ -6,6 +6,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+import static java.lang.Long.parseLong;
+
 @RestController
 @RequestMapping("/ferramentas")
 public class FerramentaController {
@@ -28,6 +30,16 @@ public class FerramentaController {
             return ferramentaRepository.searchByTipoFerramenta(q);
         }
         return (List<Ferramenta>) ferramentaRepository.findAll();
+    }
+
+    @GetMapping(params = "proprietarioId")
+    public List<Ferramenta> getFerramentasByUserId(@RequestParam String proprietarioId) {
+        try {
+            Long id = parseLong(proprietarioId);
+            return ferramentaRepository.findByProprietarioId(id);
+        } catch (NumberFormatException e) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "proprietarioId deve ser um número");
+        }
     }
 
 }
