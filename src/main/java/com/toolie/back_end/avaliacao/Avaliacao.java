@@ -1,9 +1,7 @@
 package com.toolie.back_end.avaliacao;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.toolie.back_end.ferramenta.Ferramenta;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +18,10 @@ public class Avaliacao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "ferramenta_id")
+    private final Ferramenta ferramenta;
 
     private final Integer nota;
 
