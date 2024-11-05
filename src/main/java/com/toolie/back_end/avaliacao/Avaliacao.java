@@ -1,6 +1,7 @@
 package com.toolie.back_end.avaliacao;
 
 import com.toolie.back_end.ferramenta.Ferramenta;
+import com.toolie.back_end.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,10 @@ public class Avaliacao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    @ManyToOne
+    @JoinColumn(name = "avaliador_id")
+    private final Usuario avaliador;
 
     @ManyToOne
     @JoinColumn(name = "ferramenta_id")
