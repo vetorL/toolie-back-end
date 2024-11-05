@@ -44,6 +44,7 @@ public class FerramentaControllerTests {
                 "Martelo",
                 "Usado",
                 "Martelo de aço de 500g",
+                20,
                 "Disponível",
                 "Centro",
                 "fotosURL1",
@@ -56,6 +57,7 @@ public class FerramentaControllerTests {
                 "Chave de fenda",
                 "Novo",
                 "Chave de fenda Philips",
+                50,
                 "Indisponível",
                 "Zona Sul",
                 "fotosURL2",
@@ -125,8 +127,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", "Disponível", "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", "Disponível", "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "Disponível", "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Disponível", "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1);
 
         when(ferramentaRepository.searchByTipoFerramenta("Drill")).thenReturn(ferramentas);
@@ -141,8 +143,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithoutQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", "Disponível", "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", "Disponível", "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "Disponível", "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Disponível", "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1, ferramenta2);
 
         when(ferramentaRepository.findAll()).thenReturn(ferramentas);

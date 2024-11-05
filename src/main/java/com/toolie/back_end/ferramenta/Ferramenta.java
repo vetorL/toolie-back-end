@@ -26,6 +26,8 @@ public class Ferramenta {
 
     private final String descricao;
 
+    private final double precoAluguel;
+
     private final String disponibilidade;
 
     private final String localizacao;
