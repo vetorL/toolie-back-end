@@ -21,16 +21,16 @@ Retorna os dados do usuário com o id especificado.
 
 ### *Entidade Ferramenta*
 
-- GET /ferramenta
+- GET /ferramentas
 
 Retorna todas as ferramentas do banco de dados, incluindo todos os seus campos.
 
-- GET /ferramenta/{id}
+- GET /ferramentas/{id}
 
 Retorna os dados da ferramenta com o id especificado. 
 Caso o id especificado não exista no banco de dados o código 404 é retornado.
 
-- GET /ferramenta/?q=exemplo+de+query
+- GET /ferramentas/?q=exemplo+de+query
 
 Mecanismo de pesquisa simples de ferramentas.
 Retorna todas as ferramentas do banco de dados que correspondem com a query.
