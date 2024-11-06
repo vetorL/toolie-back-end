@@ -2,6 +2,15 @@
 
 Back end do aplicativo Toolie para a disciplina Resolução de Problemas II
 
+## Rodar a API
+
+Para rodar a API na sua máquina local acesse o diretório em 
+que ela está instalada e insira o seguinte comando no terminal:
+> ./mvnw spring-boot:run
+
+*Exemplo:*
+![Comando no terminal para rodar a API](comando_rodar_api.png)
+
 ## Esquema do banco de dados
 
 Para a criação dessa API nos baseamos no seguinte esquema:
