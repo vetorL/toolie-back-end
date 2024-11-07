@@ -18,7 +18,7 @@ _Exemplo:_
 Para a criação dessa API nos baseamos no seguinte esquema:
 ![Esquema do banco de dados](esquema-bd.jpeg)
 
-## Endpoints
+## Endpoints Funcionando
 
 ### _Entidade Usuario_
 
@@ -152,5 +152,72 @@ GET /ferramentas?proprietarioId={id}
 "fotos": ["imagem3.jpg"],
 "condicoes_uso": "Usar com cuidado",
 "opcoes_entrega": "Retirada no local"
+}
+]
+
+## Endpoints Em Construção
+
+GET /usuarios/{id}/ferramentas-alugadas -> Ferramentas que o usuário (locatário) já alugou.
+[
+{
+"id": 1, (int)
+"nome": "Furadeira", (String)
+"data_inicio": "2023-10-10", (LocalDate)
+"data_fim": "2023-10-12", (LocalDate)
+"status": "devolvida" (String)
+},
+{
+"id": 2,
+"nome": "Marreta",
+"data_inicio": "2023-11-01",
+"data_fim": "2023-11-03",
+"status": "em uso"
+}
+]
+
+GET /usuarios/{id}/ferramentas-em-aluguel ->Ferramentas de um locador que estão alugadas.
+[
+{
+"id": 3, (int)
+"nome": "Esmerilhadeira", (String)
+"locatario": "Maria Silva", (String)
+"data_inicio": "2023-11-05", (LocalDate)
+"data_fim": "2023-11-10", (LocalDate)
+"status": "em uso" (String)
+}
+]
+
+POST /alugueis -> Aluguel de uma ferramenta
+{
+"id": 1, (int)
+"ferramenta_id": 10, (int)
+"locador_id": 3, (int)
+"locatario_id": 8, (int)
+"data_inicio": "2023-11-15", (LocalDate)
+"data_fim": "2023-11-20", (LocalDate)
+"status": "pendente", (String)
+"metodo_entrega": "retirada no local" (String)
+}
+
+POST /alugueis/{id}/devolver -> Devolver ferramenta/ferramentas
+{
+"id": 1,
+"ferramenta_id": 10,
+"locador_id": 3,
+"locatario_id": 8,
+"status": "devolvido",
+"data_devolucao": "2023-11-20"
+}
+
+POST /avaliacoes -> Avalia usuário
+[
+{
+"id": 1, (int)
+"avaliador_id": 8, (int)
+"avaliado_id": 3, (int)
+"ferramenta_id": 10, (int)
+"nota": 5, (BigDecimal)
+"comentario": "Ótimo locador, super recomendo!", (String)
+"data_avaliacao": "2023-11-20" (LocalDate)
 }
 ]
