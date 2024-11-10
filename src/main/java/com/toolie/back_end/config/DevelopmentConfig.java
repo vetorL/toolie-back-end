@@ -2,6 +2,7 @@ package com.toolie.back_end.config;
 
 import com.toolie.back_end.aluguel.Aluguel;
 import com.toolie.back_end.aluguel.AluguelRepository;
+import com.toolie.back_end.ferramenta.Disponibilidade;
 import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.ferramenta.FerramentaRepository;
 import com.toolie.back_end.usuario.Usuario;
@@ -65,7 +66,6 @@ public class DevelopmentConfig {
                     "Usado",
                     "Martelo de aço de 500g",
                     20,
-                    "Disponível",
                     "Centro",
                     "fotosURL1",
                     "Condições adequadas",
@@ -80,7 +80,6 @@ public class DevelopmentConfig {
                             "Novo",
                             "Chave de fenda Philips",
                             50,
-                            "Indisponível",
                             "Zona Sul",
                             "fotosURL2",
                             "Condições novas",

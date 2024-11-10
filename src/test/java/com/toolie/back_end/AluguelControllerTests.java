@@ -59,7 +59,6 @@ public class AluguelControllerTests {
                 "Usado",
                 "Martelo de aço de 500g",
                 20,
-                "Disponível",
                 "Centro",
                 "fotosURL1",
                 "Condições adequadas",

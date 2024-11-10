@@ -1,5 +1,6 @@
 package com.toolie.back_end;
 
+import com.toolie.back_end.ferramenta.Disponibilidade;
 import com.toolie.back_end.usuario.Usuario;
 import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.ferramenta.FerramentaController;
@@ -45,7 +46,6 @@ public class FerramentaControllerTests {
                 "Usado",
                 "Martelo de aço de 500g",
                 20,
-                "Disponível",
                 "Centro",
                 "fotosURL1",
                 "Condições adequadas",
@@ -58,7 +58,6 @@ public class FerramentaControllerTests {
                 "Novo",
                 "Chave de fenda Philips",
                 50,
-                "Indisponível",
                 "Zona Sul",
                 "fotosURL2",
                 "Condições novas",
@@ -76,7 +75,7 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$[0].tipoFerramenta").value("Martelo"))
                 .andExpect(jsonPath("$[0].estadoDeUso").value("Usado"))
                 .andExpect(jsonPath("$[0].descricao").value("Martelo de aço de 500g"))
-                .andExpect(jsonPath("$[0].disponibilidade").value("Disponível"))
+                .andExpect(jsonPath("$[0].disponibilidade").value("DISPONIVEL"))
                 .andExpect(jsonPath("$[0].localizacao").value("Centro"))
                 .andExpect(jsonPath("$[0].fotosURL").value("fotosURL1"))
                 .andExpect(jsonPath("$[0].condicoesDeUso").value("Condições adequadas"))
@@ -87,7 +86,7 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$[1].tipoFerramenta").value("Chave de fenda"))
                 .andExpect(jsonPath("$[1].estadoDeUso").value("Novo"))
                 .andExpect(jsonPath("$[1].descricao").value("Chave de fenda Philips"))
-                .andExpect(jsonPath("$[1].disponibilidade").value("Indisponível"))
+                .andExpect(jsonPath("$[1].disponibilidade").value("DISPONIVEL"))
                 .andExpect(jsonPath("$[1].localizacao").value("Zona Sul"))
                 .andExpect(jsonPath("$[1].fotosURL").value("fotosURL2"))
                 .andExpect(jsonPath("$[1].condicoesDeUso").value("Condições novas"))
@@ -106,7 +105,7 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$.tipoFerramenta").value("Martelo"))
                 .andExpect(jsonPath("$.estadoDeUso").value("Usado"))
                 .andExpect(jsonPath("$.descricao").value("Martelo de aço de 500g"))
-                .andExpect(jsonPath("$.disponibilidade").value("Disponível"))
+                .andExpect(jsonPath("$.disponibilidade").value("DISPONIVEL"))
                 .andExpect(jsonPath("$.localizacao").value("Centro"))
                 .andExpect(jsonPath("$.fotosURL").value("fotosURL1"))
                 .andExpect(jsonPath("$.condicoesDeUso").value("Condições adequadas"))
@@ -127,8 +126,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "Disponível", "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Disponível", "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1);
 
         when(ferramentaRepository.searchByTipoFerramenta("Drill")).thenReturn(ferramentas);
@@ -143,8 +142,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithoutQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "Disponível", "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Disponível", "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1, ferramenta2);
 
         when(ferramentaRepository.findAll()).thenReturn(ferramentas);

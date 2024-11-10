@@ -28,7 +28,7 @@ public class Ferramenta {
 
     private final double precoAluguel;
 
-    private final String disponibilidade;
+    private Disponibilidade disponibilidade = Disponibilidade.DISPONIVEL;
 
     private final String localizacao;
 
