@@ -68,7 +68,7 @@ public class AluguelControllerTests {
         when(aluguelRepository.findByLocatarioId(2L)).thenReturn(Arrays.asList(aluguel1, aluguel2));
 
         // Perform the request and verify the response
-        mockMvc.perform(get("/usuarios/{userId}/ferramentas-alugadas", 2L)
+        mockMvc.perform(get("/api/v1/usuarios/{userId}/ferramentas-alugadas", 2L)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())  // Check the status code
                 .andExpect(jsonPath("$[0].status_aluguel").value("ativo"))  // Check the first aluguel
@@ -88,7 +88,7 @@ public class AluguelControllerTests {
         when(aluguelRepository.findByLocatarioId(2L)).thenReturn(Arrays.asList());
 
         // Perform the request and verify the response
-        mockMvc.perform(get("/usuarios/{userId}/ferramentas-alugadas", 2L)
+        mockMvc.perform(get("/api/v1/usuarios/{userId}/ferramentas-alugadas", 2L)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())  // Status should be OK
                 .andExpect(content().json("[]"));  // No alugueis should be returned (empty list)
