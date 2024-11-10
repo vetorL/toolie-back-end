@@ -1,9 +1,7 @@
 package com.toolie.back_end.aluguel;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.toolie.back_end.usuario.Usuario;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -20,13 +18,13 @@ public class Aluguel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "locador_id")
-//    private final Locador locador;
+    @ManyToOne
+    @JoinColumn(name = "locador_id")
+    private final Usuario locador;
 
-//    @ManyToOne
-//    @JoinColumn(name = "locatario_id")
-//    private final Locatario locatario;
+    @ManyToOne
+    @JoinColumn(name = "locatario_id")
+    private final Usuario locatario;
 
     private final Date data_inicio;
 
