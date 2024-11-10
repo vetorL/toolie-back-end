@@ -1,223 +1,291 @@
-# toolie-back-end
+# Toolie - Back-End API
 
-Back end do aplicativo Toolie para a disciplina Resolução de Problemas II
+Este repositório contém o back-end da API Toolie, desenvolvida para a disciplina **Resolução de Problemas II**. A API é construída usando **Spring Boot** e fornece funcionalidades para o aluguel de ferramentas entre usuários.
 
-## Rodar a API
+## Rodando a API
 
-Para rodar a API na sua máquina local acesse o diretório em
-que ela está instalada e insira o seguinte comando no terminal:
+Para rodar a API localmente, siga os passos abaixo:
 
-> ./mvnw spring-boot:run
+1. Navegue até o diretório onde a API está instalada.
+2. No terminal, execute o comando para rodar a API com o Maven Wrapper:
 
-_Exemplo:_
+```bash
+./mvnw spring-boot:run
+```
 
-![Comando no terminal para rodar a API](comando_rodar_api.png)
+> **Nota**: O comando acima executa o projeto Spring Boot e inicia o servidor localmente.
 
-## Esquema do banco de dados
+## Esquema do Banco de Dados
 
-Para a criação dessa API nos baseamos no seguinte esquema:
+A API foi estruturada de acordo com o seguinte esquema de banco de dados:
+
 ![Esquema do banco de dados](esquema-bd.jpeg)
 
-## Endpoints Funcionando
+## Endpoints Disponíveis
 
-### _Entidade Usuario_
+### **Entidade Usuário**
 
-GET /usuarios
+#### **GET /usuarios**
+
+Retorna uma lista de todos os usuários cadastrados.
+
+```json
 [
-{
-"id": 1, (int)
-"nome": "Ana Souza", (String)
-"email": "ana@example.com", (String)
-"telefone": "123456789", (String)
-"endereco": "Rua ABC, 123", (String)
-"status_conta": "verificado", (String)
-"avaliacao": 4.8 (BigDecimal)
-},
-{
-"id": 2,
-"nome": "Carlos Dias",
-"email": "carlos@example.com",
-"telefone": "987654321",
-"endereco": "Rua XYZ, 456",
-"status_conta": "pendente",
-"avaliacao": 4.5
-}
+  {
+    "id": 1,
+    "nome": "Ana Souza",
+    "email": "ana@example.com",
+    "telefone": "123456789",
+    "endereco": "Rua ABC, 123",
+    "status_conta": "verificado",
+    "avaliacao": 4.8
+  },
+  {
+    "id": 2,
+    "nome": "Carlos Dias",
+    "email": "carlos@example.com",
+    "telefone": "987654321",
+    "endereco": "Rua XYZ, 456",
+    "status_conta": "pendente",
+    "avaliacao": 4.5
+  }
 ]
+```
 
-GET /usuarios/{id}
+#### **GET /usuarios/{id}**
+
+Retorna os detalhes de um usuário específico pelo ID.
+
+```json
 {
-"id": 1, (int)
-"nome": "Ana Souza", (String)
-"email": "ana@example.com", (String)
-"telefone": "123456789", (String)
-"endereco": "Rua ABC, 123", (String)
-"status_conta": "verificado", (String)
-"avaliacao": 4.8 (BigDecimal)
+  "id": 1,
+  "nome": "Ana Souza",
+  "email": "ana@example.com",
+  "telefone": "123456789",
+  "endereco": "Rua ABC, 123",
+  "status_conta": "verificado",
+  "avaliacao": 4.8
 }
+```
 
-### _Entidade Ferramenta_
+---
 
-GET /ferramentas
+### **Entidade Ferramenta**
+
+#### **GET /ferramentas**
+
+Retorna uma lista de todas as ferramentas cadastradas.
+
+```json
 [
-{
-"id": 10, (int)
-"proprietario_id": 1, (int)
-"tipo_ferramenta": "Furadeira", (String)
-"nome": "Furadeira Bosch", (String)
-"estado_de_uso": "Excelente", (String)
-"descricao": "Furadeira com potência de 700W, ideal para uso doméstico.", (String)
-"preco_aluguel": 10.0, (BigDecimal)
-"disponibilidade": true, (Boolean)
-"localizacao": "Rua ABC, 123", (String)
-"fotos": ["imagem1.jpg", "imagem2.jpg"], (String)
-"condicoes_uso": "Usar com cuidado", (String)
-"opcoes_entrega": "Retirada no local" (String)
-},
-{
-"id": 11,
-"proprietario_id": 2,
-"tipo_ferramenta": "Esmerilhadeira",
-"nome": "Esmerilhadeira Dewalt",
-"estado_de_uso": "Bom",
-"descricao": "Ideal para cortes em metais e outros materiais rígidos.",
-"preco_aluguel": 15.0,
-"disponibilidade": true,
-"localizacao": "Rua XYZ, 456",
-"fotos": ["imagem3.jpg", "imagem4.jpg"],
-"condicoes_uso": "Usar com óculos de proteção",
-"opcoes_entrega": "Envio por motoboy"
-}
+  {
+    "id": 10,
+    "proprietario_id": 1,
+    "tipo_ferramenta": "Furadeira",
+    "nome": "Furadeira Bosch",
+    "estado_de_uso": "Excelente",
+    "descricao": "Furadeira com potência de 700W, ideal para uso doméstico.",
+    "preco_aluguel": 10.0,
+    "disponibilidade": true,
+    "localizacao": "Rua ABC, 123",
+    "fotos": ["imagem1.jpg", "imagem2.jpg"],
+    "condicoes_uso": "Usar com cuidado",
+    "opcoes_entrega": "Retirada no local"
+  },
+  {
+    "id": 11,
+    "proprietario_id": 2,
+    "tipo_ferramenta": "Esmerilhadeira",
+    "nome": "Esmerilhadeira Dewalt",
+    "estado_de_uso": "Bom",
+    "descricao": "Ideal para cortes em metais e outros materiais rígidos.",
+    "preco_aluguel": 15.0,
+    "disponibilidade": true,
+    "localizacao": "Rua XYZ, 456",
+    "fotos": ["imagem3.jpg", "imagem4.jpg"],
+    "condicoes_uso": "Usar com óculos de proteção",
+    "opcoes_entrega": "Envio por motoboy"
+  }
 ]
+```
 
-GET /ferramentas/{id}
+#### **GET /ferramentas/{id}**
+
+Retorna os detalhes de uma ferramenta específica pelo ID.
+
+```json
 {
-"id": 10, (int)
-"proprietario_id": 1, (int)
-"tipo_ferramenta": "Furadeira", (String)
-"nome": "Furadeira Bosch", (String)
-"estado_de_uso": "Excelente",
-"descricao": "Furadeira com potência de 700W, ideal para uso doméstico.",
-"preco_aluguel": 10.0, (BigDecimal )
-"disponibilidade": true, (Boolean)
-"localizacao": "Rua ABC, 123",
-"fotos": ["imagem1.jpg", "imagem2.jpg"], (String)
-"condicoes_uso": "Usar com cuidado", (String)
-"opcoes_entrega": "Retirada no local" (String)
+  "id": 10,
+  "proprietario_id": 1,
+  "tipo_ferramenta": "Furadeira",
+  "nome": "Furadeira Bosch",
+  "estado_de_uso": "Excelente",
+  "descricao": "Furadeira com potência de 700W, ideal para uso doméstico.",
+  "preco_aluguel": 10.0,
+  "disponibilidade": true,
+  "localizacao": "Rua ABC, 123",
+  "fotos": ["imagem1.jpg", "imagem2.jpg"],
+  "condicoes_uso": "Usar com cuidado",
+  "opcoes_entrega": "Retirada no local"
 }
+```
 
-GET /ferramentas?q=exemplo+de+query
+#### **GET /ferramentas?q={query}**
+
+Busca ferramentas com base em uma query fornecida.
+
+```json
 [
-{
-"id": 10, (int)
-"proprietario_id": 1, (int)
-"tipo_ferramenta": "Furadeira", (String)
-"nome": "Furadeira Bosch", (String)
-"estado_de_uso": "Excelente", (String)
-"descricao": "Furadeira com potência de 700W, ideal para uso doméstico.", (String)
-"preco_aluguel": 10.0, (BigDecimal)
-"disponibilidade": true, (Boolean)
-"localizacao": "Rua ABC, 123", (String)
-"fotos": ["imagem1.jpg", "imagem2.jpg"],
-"condicoes_uso": "Usar com cuidado", (String)
-"opcoes_entrega": "Retirada no local" (String)
-}
+  {
+    "id": 10,
+    "proprietario_id": 1,
+    "tipo_ferramenta": "Furadeira",
+    "nome": "Furadeira Bosch",
+    "estado_de_uso": "Excelente",
+    "descricao": "Furadeira com potência de 700W, ideal para uso doméstico.",
+    "preco_aluguel": 10.0,
+    "disponibilidade": true,
+    "localizacao": "Rua ABC, 123",
+    "fotos": ["imagem1.jpg", "imagem2.jpg"],
+    "condicoes_uso": "Usar com cuidado",
+    "opcoes_entrega": "Retirada no local"
+  }
 ]
+```
 
-GET /ferramentas?proprietarioId={id}
+#### **GET /ferramentas?proprietarioId={id}**
+
+Retorna todas as ferramentas de um determinado proprietário.
+
+```json
 [
-{
-"id": 10, (int)
-"proprietario_id": 1, (int)
-"tipo_ferramenta": "Furadeira", (String)
-"nome": "Furadeira Bosch", (String)
-"estado_de_uso": "Excelente", (String)
-"descricao": "Furadeira com potência de 700W, ideal para uso doméstico.", (String)
-"preco_aluguel": 10.0, (BigDecimal)
-"disponibilidade": true, (Boolean)
-"localizacao": "Rua ABC, 123", (String)
-"fotos": ["imagem1.jpg", "imagem2.jpg"], (String)
-"condicoes_uso": "Usar com cuidado", (String)
-"opcoes_entrega": "Retirada no local" (String)
-},
-{
-"id": 12,
-"proprietario_id": 1,
-"tipo_ferramenta": "Serra Elétrica",
-"nome": "Serra Dewalt",
-"estado_de_uso": "Bom",
-"descricao": "Ideal para cortes precisos em madeira.",
-"preco_aluguel": 20.0,
-"disponibilidade": true,
-"localizacao": "Rua ABC, 123",
-"fotos": ["imagem3.jpg"],
-"condicoes_uso": "Usar com cuidado",
-"opcoes_entrega": "Retirada no local"
-}
+  {
+    "id": 10,
+    "proprietario_id": 1,
+    "tipo_ferramenta": "Furadeira",
+    "nome": "Furadeira Bosch",
+    "estado_de_uso": "Excelente",
+    "descricao": "Furadeira com potência de 700W, ideal para uso doméstico.",
+    "preco_aluguel": 10.0,
+    "disponibilidade": true,
+    "localizacao": "Rua ABC, 123",
+    "fotos": ["imagem1.jpg", "imagem2.jpg"],
+    "condicoes_uso": "Usar com cuidado",
+    "opcoes_entrega": "Retirada no local"
+  },
+  {
+    "id": 12,
+    "proprietario_id": 1,
+    "tipo_ferramenta": "Serra Elétrica",
+    "nome": "Serra Dewalt",
+    "estado_de_uso": "Bom",
+    "descricao": "Ideal para cortes precisos em madeira.",
+    "preco_aluguel": 20.0,
+    "disponibilidade": true,
+    "localizacao": "Rua ABC, 123",
+    "fotos": ["imagem3.jpg"],
+    "condicoes_uso": "Usar com cuidado",
+    "opcoes_entrega": "Retirada no local"
+  }
 ]
+```
 
-## Endpoints Em Construção
+---
 
-GET /usuarios/{id}/ferramentas-alugadas -> Ferramentas que o usuário (locatário) já alugou.
+### **Endpoints em Construção**
+
+#### **GET /usuarios/{id}/ferramentas-alugadas**
+
+Retorna uma lista de ferramentas que o usuário (locatário) já alugou.
+
+```json
 [
-{
-"id": 1, (int)
-"nome": "Furadeira", (String)
-"data_inicio": "2023-10-10", (LocalDate)
-"data_fim": "2023-10-12", (LocalDate)
-"status": "devolvida" (String)
-},
-{
-"id": 2,
-"nome": "Marreta",
-"data_inicio": "2023-11-01",
-"data_fim": "2023-11-03",
-"status": "em uso"
-}
+  {
+    "id": 1,
+    "nome": "Furadeira",
+    "data_inicio": "2023-10-10",
+    "data_fim": "2023-10-12",
+    "status": "devolvida"
+  },
+  {
+    "id": 2,
+    "nome": "Marreta",
+    "data_inicio": "2023-11-01",
+    "data_fim": "2023-11-03",
+    "status": "em uso"
+  }
 ]
+```
 
-GET /usuarios/{id}/ferramentas-em-aluguel ->Ferramentas de um locador que estão alugadas.
+#### **GET /usuarios/{id}/ferramentas-em-aluguel**
+
+Retorna as ferramentas que um locador tem alugadas.
+
+```json
 [
-{
-"id": 3, (int)
-"nome": "Esmerilhadeira", (String)
-"locatario": "Maria Silva", (String)
-"data_inicio": "2023-11-05", (LocalDate)
-"data_fim": "2023-11-10", (LocalDate)
-"status": "em uso" (String)
-}
+  {
+    "id": 3,
+    "nome": "Esmerilhadeira",
+    "locatario": "Maria Silva",
+    "data_inicio": "2023-11-05",
+    "data_fim": "2023-11-10",
+    "status": "em uso"
+  }
 ]
+```
 
-POST /alugueis -> Aluguel de uma ferramenta
+#### **POST /alugueis**
+
+Realiza o aluguel de uma ferramenta.
+
+```json
 {
-"id": 1, (int)
-"ferramenta_id": 10, (int)
-"locador_id": 3, (int)
-"locatario_id": 8, (int)
-"data_inicio": "2023-11-15", (LocalDate)
-"data_fim": "2023-11-20", (LocalDate)
-"status": "pendente", (String)
-"metodo_entrega": "retirada no local" (String)
+  "id": 1,
+  "ferramenta_id": 10,
+  "locador_id": 3,
+  "locatario_id": 8,
+  "data_inicio": "2023-11-15",
+  "data_fim": "2023-11-20",
+  "status": "pendente",
+  "metodo_entrega": "retirada no local"
 }
+```
 
-POST /alugueis/{id}/devolver -> Devolver ferramenta/ferramentas
+#### **POST /alugueis/{id}/devolver**
+
+Realiza a devolução de uma ferramenta.
+
+```json
 {
-"id": 1,
-"ferramenta_id": 10,
-"locador_id": 3,
-"locatario_id": 8,
-"status": "devolvido",
-"data_devolucao": "2023-11-20"
+  "id": 1,
+  "ferramenta_id": 10,
+  "locador_id": 3,
+  "locatario_id": 8,
+  "status": "devolvido",
+  "data_devolucao": "2023-11-20"
 }
+```
 
-POST /avaliacoes -> Avalia usuário
+#### **POST /avaliacoes**
+
+Avalia um usuário após o aluguel de uma ferramenta.
+
+```json
 [
-{
-"id": 1, (int)
-"avaliador_id": 8, (int)
-"avaliado_id": 3, (int)
-"ferramenta_id": 10, (int)
-"nota": 5, (BigDecimal)
-"comentario": "Ótimo locador, super recomendo!", (String)
-"data_avaliacao": "2023-11-20" (LocalDate)
-}
+  {
+    "id": 1,
+    "avaliador_id": 8,
+    "avaliado_id": 3,
+    "ferramenta_id": 10,
+    "nota": 5,
+    "comentario": "Ótimo locador, super recomendo!",
+    "data_avaliacao": "2023-11-20"
+  }
 ]
+```
+
+---
+
+## Tecnologias Utilizadas
+
+- **Spring Boot**: Framework para desenvolvimento de aplicações Java.
