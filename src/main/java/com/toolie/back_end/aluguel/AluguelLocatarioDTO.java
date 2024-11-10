@@ -1,5 +1,6 @@
 package com.toolie.back_end.aluguel;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
@@ -8,8 +9,13 @@ import java.util.Date;
 public class AluguelLocatarioDTO {
     private long id;
     private String tipoFerramenta;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dataInicio;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dataFim;
+
     private String statusAluguel;
     private String fotoFerramentaURL;
 
