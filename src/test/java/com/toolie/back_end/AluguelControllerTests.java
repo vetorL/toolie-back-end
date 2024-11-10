@@ -3,6 +3,7 @@ package com.toolie.back_end;
 import com.toolie.back_end.aluguel.Aluguel;
 import com.toolie.back_end.aluguel.AluguelController;
 import com.toolie.back_end.aluguel.AluguelRepository;
+import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.usuario.Usuario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,6 +31,7 @@ public class AluguelControllerTests {
 
     private Usuario locador;
     private Usuario locatario;
+    private Ferramenta ferramenta1;
 
     @BeforeEach
     public void setUp() {
@@ -51,6 +53,19 @@ public class AluguelControllerTests {
         );
         locatario.setId(2L);  // Explicitly set the ID for locatario
 
+        ferramenta1 = new Ferramenta(
+                locador,
+                "Martelo",
+                "Usado",
+                "Martelo de aço de 500g",
+                20,
+                "Disponível",
+                "Centro",
+                "fotosURL1",
+                "Condições adequadas",
+                "Retirada no local"
+        );
+
         // Initialize MockMvc to simulate HTTP requests
         mockMvc = MockMvcBuilders.standaloneSetup(new AluguelController(aluguelRepository)).build();
     }
@@ -61,8 +76,8 @@ public class AluguelControllerTests {
         Date dataInicio = new Date();
         Date dataFim = new Date(dataInicio.getTime() + 86400000L);  // 1 day later
 
-        Aluguel aluguel1 = new Aluguel(locador, locatario, dataInicio, dataFim, "ativo", "pago", "20.0", "retirada no local");
-        Aluguel aluguel2 = new Aluguel(locador, locatario, dataInicio, dataFim, "ativo", "pago", "30.0", "envio por motoboy");
+        Aluguel aluguel1 = new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, "ativo", "pago", "20.0", "retirada no local");
+        Aluguel aluguel2 = new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, "ativo", "pago", "30.0", "envio por motoboy");
 
         // Mock the repository response
         when(aluguelRepository.findByLocatarioId(2L)).thenReturn(Arrays.asList(aluguel1, aluguel2));
@@ -71,12 +86,12 @@ public class AluguelControllerTests {
         mockMvc.perform(get("/api/v1/usuarios/{userId}/ferramentas-alugadas", 2L)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())  // Check the status code
-                .andExpect(jsonPath("$[0].status_aluguel").value("ativo"))  // Check the first aluguel
-                .andExpect(jsonPath("$[1].status_aluguel").value("ativo"))  // Check the second aluguel
+                .andExpect(jsonPath("$[0].statusAluguel").value("ativo"))  // Check the first aluguel
+                .andExpect(jsonPath("$[1].statusAluguel").value("ativo"))  // Check the second aluguel
                 .andExpect(jsonPath("$[0].locatario.id").value(2L))  // Check locatario of the first aluguel
                 .andExpect(jsonPath("$[1].locatario.id").value(2L))  // Check locatario of the second aluguel
-                .andExpect(jsonPath("$[0].preco_final").value("20.0"))  // Check the price of the first aluguel
-                .andExpect(jsonPath("$[1].preco_final").value("30.0"));  // Check the price of the second aluguel
+                .andExpect(jsonPath("$[0].precoFinal").value("20.0"))  // Check the price of the first aluguel
+                .andExpect(jsonPath("$[1].precoFinal").value("30.0"));  // Check the price of the second aluguel
 
         // Verify that the repository was called once
         verify(aluguelRepository, times(1)).findByLocatarioId(2L);

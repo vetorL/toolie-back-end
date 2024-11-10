@@ -59,19 +59,21 @@ public class DevelopmentConfig {
 
             usuarioRepository.saveAll(usuarios);
 
+            Ferramenta ferramenta1 = new Ferramenta(
+                    locador,
+                    "Martelo",
+                    "Usado",
+                    "Martelo de aço de 500g",
+                    20,
+                    "Disponível",
+                    "Centro",
+                    "fotosURL1",
+                    "Condições adequadas",
+                    "Retirada no local"
+            );
+
             List<Ferramenta> ferramentas = Arrays.asList(
-                    new Ferramenta(
-                            proprietario1,
-                            "Martelo",
-                            "Usado",
-                            "Martelo de aço de 500g",
-                            20,
-                            "Disponível",
-                            "Centro",
-                            "fotosURL1",
-                            "Condições adequadas",
-                            "Retirada no local"
-                    ),
+                    ferramenta1,
                     new Ferramenta(
                             proprietario2,
                             "Chave de fenda",
@@ -93,8 +95,8 @@ public class DevelopmentConfig {
             Date dataInicio = new Date();
             Date dataFim = new Date(dataInicio.getTime() + 86400000L);
 
-            Aluguel aluguel1 = new Aluguel(locador, locatario, dataInicio, dataFim, "ativo", "pago", "20.0", "retirada no local");
-            Aluguel aluguel2 = new Aluguel(locador, locatario, dataInicio, dataFim, "ativo", "pago", "30.0", "envio por motoboy");
+            Aluguel aluguel1 = new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, "ativo", "pago", "20.0", "retirada no local");
+            Aluguel aluguel2 = new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, "ativo", "pago", "30.0", "envio por motoboy");
 
             List<Aluguel> alugueis = Arrays.asList(aluguel1, aluguel2);
 

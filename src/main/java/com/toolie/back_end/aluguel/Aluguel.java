@@ -1,5 +1,6 @@
 package com.toolie.back_end.aluguel;
 
+import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -26,16 +27,20 @@ public class Aluguel {
     @JoinColumn(name = "locatario_id")
     private final Usuario locatario;
 
-    private final Date data_inicio;
+    @ManyToOne
+    @JoinColumn(name = "ferramenta_id")
+    private final Ferramenta ferramenta;
 
-    private final Date data_fim;
+    private final Date dataInicio;
 
-    private final String status_aluguel;
+    private final Date dataFim;
 
-    private final String status_pagamento;
+    private final String statusAluguel;
 
-    private final String preco_final;
+    private final String statusPagamento;
 
-    private final String metodo_entrega;
+    private final String precoFinal;
+
+    private final String metodoEntrega;
     
 }
