@@ -190,10 +190,6 @@ Retorna todas as ferramentas de um determinado proprietário.
 ]
 ```
 
----
-
-### **Endpoints em Construção**
-
 #### **GET /api/v1/usuarios/{id}/ferramentas-alugadas**
 
 Retorna uma lista de ferramentas que o usuário (locatário) já alugou.
@@ -202,20 +198,26 @@ Retorna uma lista de ferramentas que o usuário (locatário) já alugou.
 [
   {
     "id": 1,
-    "nome": "Furadeira",
-    "data_inicio": "2023-10-10",
-    "data_fim": "2023-10-12",
-    "status": "devolvida"
+    "tipoFerramenta": "Martelo",
+    "dataInicio": "2024-11-10",
+    "dataFim": "2024-11-11",
+    "statusAluguel": "devolvida",
+    "fotoFerramentaURL": "https://picsum.photos/200"
   },
   {
     "id": 2,
-    "nome": "Marreta",
-    "data_inicio": "2023-11-01",
-    "data_fim": "2023-11-03",
-    "status": "em uso"
+    "tipoFerramenta": "Marreta",
+    "dataInicio": "2023-11-01",
+    "dataFim": "2023-11-03",
+    "statusAluguel": "em uso",
+    "fotoFerramentaURL": "https://picsum.photos/200"
   }
 ]
 ```
+
+---
+
+### **Endpoints em Construção**
 
 #### **GET /usuarios/{id}/ferramentas-em-aluguel**
 
