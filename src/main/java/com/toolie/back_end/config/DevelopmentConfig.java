@@ -1,5 +1,7 @@
 package com.toolie.back_end.config;
 
+import com.toolie.back_end.aluguel.Aluguel;
+import com.toolie.back_end.aluguel.AluguelRepository;
 import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.ferramenta.FerramentaRepository;
 import com.toolie.back_end.usuario.Usuario;
@@ -9,21 +11,40 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Configuration
 public class DevelopmentConfig {
 
     @Bean
-    public CommandLineRunner dataLoader(UsuarioRepository usuarioRepository, FerramentaRepository ferramentaRepository) {
+    public CommandLineRunner dataLoader(UsuarioRepository usuarioRepository, FerramentaRepository ferramentaRepository, AluguelRepository aluguelRepository) {
         return args -> {
 
             Usuario proprietario1 = new Usuario("João", "joao@gmail.com", "1234567890", "Endereço Proprietario", "fotoURL");
             Usuario proprietario2 = new Usuario("Yoel", "yoel@gmail.com", "12345678490", "Endereço Proprietario4", "fotoURL4");
 
+            Usuario locador = new Usuario(
+                    "Locador",
+                    "locador@example.com",
+                    "12345",
+                    "Rua 1",
+                    "http://example.com/documento.jpg"
+            );
+
+            Usuario locatario = new Usuario(
+                    "Locatario",
+                    "locatario@example.com",
+                    "67890",
+                    "Rua 2",
+                    "http://example.com/documento2.jpg"
+            );
+
             List<Usuario> usuarios = Arrays.asList(
                     proprietario1,
                     proprietario2,
+                    locador,
+                    locatario,
                     new Usuario("Jorge", "jorge@gmail.com", "1234567890", "Endereço 1", "url1"),
                     new Usuario("Maria", "maria@gmail.com", "2345678901", "Endereço 2", "url2"),
                     new Usuario("Pedro", "pedro@gmail.com", "3456789012", "Endereço 3", "url3"),
@@ -66,6 +87,18 @@ public class DevelopmentConfig {
             );
 
             ferramentaRepository.saveAll(ferramentas);
+
+
+
+            Date dataInicio = new Date();
+            Date dataFim = new Date(dataInicio.getTime() + 86400000L);
+
+            Aluguel aluguel1 = new Aluguel(locador, locatario, dataInicio, dataFim, "ativo", "pago", "20.0", "retirada no local");
+            Aluguel aluguel2 = new Aluguel(locador, locatario, dataInicio, dataFim, "ativo", "pago", "30.0", "envio por motoboy");
+
+            List<Aluguel> alugueis = Arrays.asList(aluguel1, aluguel2);
+
+            aluguelRepository.saveAll(alugueis);
         };
     }
 
