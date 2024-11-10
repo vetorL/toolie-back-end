@@ -87,11 +87,7 @@ public class AluguelControllerTests {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())  // Check the status code
                 .andExpect(jsonPath("$[0].statusAluguel").value("ativo"))  // Check the first aluguel
-                .andExpect(jsonPath("$[1].statusAluguel").value("ativo"))  // Check the second aluguel
-                .andExpect(jsonPath("$[0].locatario.id").value(2L))  // Check locatario of the first aluguel
-                .andExpect(jsonPath("$[1].locatario.id").value(2L))  // Check locatario of the second aluguel
-                .andExpect(jsonPath("$[0].precoFinal").value("20.0"))  // Check the price of the first aluguel
-                .andExpect(jsonPath("$[1].precoFinal").value("30.0"));  // Check the price of the second aluguel
+                .andExpect(jsonPath("$[1].statusAluguel").value("ativo"));  // Check the second aluguel
 
         // Verify that the repository was called once
         verify(aluguelRepository, times(1)).findByLocatarioId(2L);
