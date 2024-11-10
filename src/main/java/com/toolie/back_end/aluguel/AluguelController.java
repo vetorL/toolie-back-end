@@ -1,5 +1,6 @@
 package com.toolie.back_end.aluguel;
 
+import com.toolie.back_end.ferramenta.Disponibilidade;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,11 @@ public class AluguelController {
         return alugueis.stream()
                 .map(this::mapToDTO)
                 .collect(Collectors.toList());
+    }
+
+    @GetMapping("/usuarios/{userId}/ferramentas-em-aluguel")
+    public List<Aluguel> ferramentasEmAluguel(@PathVariable long userId) {
+        return aluguelRepository.findByLocadorIdAndFerramentaDisponibilidade(userId, Disponibilidade.ALUGADA);
     }
 
     // Private method to map Aluguel entity to AluguelLocatarioDTO
