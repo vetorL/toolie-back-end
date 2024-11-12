@@ -3,6 +3,7 @@ package com.toolie.back_end;
 import com.toolie.back_end.aluguel.Aluguel;
 import com.toolie.back_end.aluguel.AluguelController;
 import com.toolie.back_end.aluguel.AluguelRepository;
+import com.toolie.back_end.ferramenta.Disponibilidade;
 import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.usuario.Usuario;
 import org.junit.jupiter.api.BeforeEach;
@@ -107,4 +108,29 @@ public class AluguelControllerTests {
         // Verify that the repository was called once
         verify(aluguelRepository, times(1)).findByLocatarioId(2L);
     }
+
+    @Test
+    public void testFerramentasEmAluguel() throws Exception {
+        // Setup sample data for the test
+        Date dataInicio = new Date();
+        Date dataFim = new Date(dataInicio.getTime() + 86400000L);  // 1 day later
+
+        Aluguel aluguel1 = new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, "ativo", "pago", "20.0", "retirada no local");
+        Aluguel aluguel2 = new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, "ativo", "pago", "30.0", "envio por motoboy");
+
+        // Mock the repository response for rented tools that are in use
+        when(aluguelRepository.findByLocadorIdAndFerramentaDisponibilidade(1L, Disponibilidade.ALUGADA))
+                .thenReturn(Arrays.asList(aluguel1, aluguel2));
+
+        // Perform the request and verify the response
+        mockMvc.perform(get("/api/v1/usuarios/{userId}/ferramentas-em-aluguel", 1L)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())  // Status should be OK
+                .andExpect(jsonPath("$[0].statusAluguel").value("ativo"))  // Check the first aluguel
+                .andExpect(jsonPath("$[1].statusAluguel").value("ativo"));  // Check the second aluguel
+
+        // Verify that the repository was called once
+        verify(aluguelRepository, times(1)).findByLocadorIdAndFerramentaDisponibilidade(1L, Disponibilidade.ALUGADA);
+    }
+
 }
