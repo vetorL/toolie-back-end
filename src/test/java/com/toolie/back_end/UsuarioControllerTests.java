@@ -30,6 +30,8 @@ public class UsuarioControllerTests {
     private Usuario usuario1;
     private Usuario usuario2;
 
+    private String baseURL = "/api/v1/usuarios";
+
     @BeforeEach
     void setup() {
         usuario1 = new Usuario("Jorge", "jorge@gmail.com", "1234567890", "Endereço 1", "url1");
@@ -40,7 +42,7 @@ public class UsuarioControllerTests {
     public void testGetAllUsuarios() throws Exception {
         Mockito.when(usuarioRepository.findAll()).thenReturn(Arrays.asList(usuario1, usuario2));
 
-        mockMvc.perform(get("/usuarios"))
+        mockMvc.perform(get(baseURL))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$[0].nome").value("Jorge"))
@@ -53,7 +55,7 @@ public class UsuarioControllerTests {
     public void testGetUsuarioById_Found() throws Exception {
         Mockito.when(usuarioRepository.findById(1L)).thenReturn(Optional.of(usuario1));
 
-        mockMvc.perform(get("/usuarios/1"))
+        mockMvc.perform(get(baseURL + "/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$.nome").value("Jorge"))
@@ -64,7 +66,7 @@ public class UsuarioControllerTests {
     public void testGetUsuarioById_NotFound() throws Exception {
         Mockito.when(usuarioRepository.findById(anyLong())).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/usuarios/999"))
+        mockMvc.perform(get(baseURL + "/999"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(""));
     }

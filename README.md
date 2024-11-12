@@ -30,7 +30,7 @@ A API foi estruturada de acordo com o seguinte esquema de banco de dados:
 
 ### **Entidade Usuário**
 
-#### **GET /usuarios**
+#### **GET /api/v1/usuarios**
 
 Retorna uma lista de todos os usuários cadastrados.
 
@@ -57,7 +57,7 @@ Retorna uma lista de todos os usuários cadastrados.
 ]
 ```
 
-#### **GET /usuarios/{id}**
+#### **GET /api/v1/usuarios/{id}**
 
 Retorna os detalhes de um usuário específico pelo ID.
 
