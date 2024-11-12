@@ -33,6 +33,8 @@ public class FerramentaControllerTests {
     private Ferramenta ferramenta2;
     private Usuario proprietario;
 
+    private String baseURL = "/api/v1/ferramentas";
+
     @BeforeEach
     void setup() {
         proprietario = new Usuario("João", "joao@gmail.com", "1234567890", "Endereço Proprietario", "fotoURL");
@@ -66,7 +68,7 @@ public class FerramentaControllerTests {
     public void testGetFerramentas() throws Exception {
         when(ferramentaRepository.findAll()).thenReturn(Arrays.asList(ferramenta1, ferramenta2));
 
-        mockMvc.perform(get("/ferramentas"))
+        mockMvc.perform(get(baseURL))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("$[0].tipoFerramenta").value("Martelo"))
@@ -97,7 +99,7 @@ public class FerramentaControllerTests {
         // Mock the repository to return the ferramenta when the ID is 1
         when(ferramentaRepository.findById(1L)).thenReturn(Optional.of(ferramenta1));
 
-        mockMvc.perform(get("/ferramentas/1"))
+        mockMvc.perform(get(baseURL + "/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.tipoFerramenta").value("Martelo"))
                 .andExpect(jsonPath("$.estadoDeUso").value("Usado"))
@@ -116,7 +118,7 @@ public class FerramentaControllerTests {
         // Mock the repository to return an empty Optional when the ID is not found
         when(ferramentaRepository.findById(9999L)).thenReturn(Optional.empty());
 
-        mockMvc.perform(get("/ferramentas/9999"))
+        mockMvc.perform(get(baseURL + "/9999"))
                 .andExpect(status().isNotFound());
     }
 
@@ -130,7 +132,7 @@ public class FerramentaControllerTests {
         when(ferramentaRepository.searchByTipoFerramenta("Drill")).thenReturn(ferramentas);
 
         // When & Then
-        mockMvc.perform(get("/ferramentas").param("q", "Drill"))
+        mockMvc.perform(get(baseURL).param("q", "Drill"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].tipoFerramenta").value("Drill"))
                 .andExpect(jsonPath("$[0].descricao").value("Powerful drill"));
@@ -146,7 +148,7 @@ public class FerramentaControllerTests {
         when(ferramentaRepository.findAll()).thenReturn(ferramentas);
 
         // When & Then
-        mockMvc.perform(get("/ferramentas"))
+        mockMvc.perform(get(baseURL))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].tipoFerramenta").value("Drill"))
                 .andExpect(jsonPath("$[1].tipoFerramenta").value("Hammer"));
@@ -159,7 +161,7 @@ public class FerramentaControllerTests {
         when(ferramentaRepository.findByProprietarioId(proprietario.getId())).thenReturn(ferramentas);
 
         // When & Then
-        mockMvc.perform(get("/ferramentas").param("proprietarioId", String.valueOf(proprietario.getId())))
+        mockMvc.perform(get(baseURL).param("proprietarioId", String.valueOf(proprietario.getId())))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].tipoFerramenta").value("Martelo"))
                 .andExpect(jsonPath("$[1].tipoFerramenta").value("Chave de fenda"))
@@ -173,7 +175,7 @@ public class FerramentaControllerTests {
         when(ferramentaRepository.findByProprietarioId(proprietario.getId())).thenReturn(List.of());
 
         // When & Then
-        mockMvc.perform(get("/ferramentas").param("proprietarioId", String.valueOf(proprietario.getId())))
+        mockMvc.perform(get(baseURL).param("proprietarioId", String.valueOf(proprietario.getId())))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(0)); // Expecting an empty array
     }
@@ -184,7 +186,7 @@ public class FerramentaControllerTests {
         String invalidProprietarioId = "abc"; // non-numeric string
 
         // When & Then
-        mockMvc.perform(get("/ferramentas").param("proprietarioId", invalidProprietarioId))
+        mockMvc.perform(get(baseURL).param("proprietarioId", invalidProprietarioId))
                 .andExpect(status().isBadRequest()); // Expecting Bad Request due to parse error
     }
 }

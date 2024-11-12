@@ -9,7 +9,7 @@ import java.util.List;
 import static java.lang.Long.parseLong;
 
 @RestController
-@RequestMapping("/ferramentas")
+@RequestMapping("/api/v1/ferramentas")
 public class FerramentaController {
 
     private final FerramentaRepository ferramentaRepository;

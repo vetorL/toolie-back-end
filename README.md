@@ -83,7 +83,7 @@ Retorna os detalhes de um usuário específico pelo ID.
 
 ### **Entidade Ferramenta**
 
-#### **GET /ferramentas**
+#### **GET /api/v1/ferramentas**
 
 Retorna uma lista de todas as ferramentas cadastradas.
 
@@ -120,7 +120,7 @@ Retorna uma lista de todas as ferramentas cadastradas.
 ]
 ```
 
-#### **GET /ferramentas/{id}**
+#### **GET /api/v1/ferramentas/{id}**
 
 Retorna os detalhes de uma ferramenta específica pelo ID.
 
@@ -141,7 +141,7 @@ Retorna os detalhes de uma ferramenta específica pelo ID.
 }
 ```
 
-#### **GET /ferramentas?q={query}**
+#### **GET /api/v1/ferramentas?q={query}**
 
 Busca ferramentas com base em uma query fornecida.
 
@@ -164,7 +164,7 @@ Busca ferramentas com base em uma query fornecida.
 ]
 ```
 
-#### **GET /ferramentas?proprietarioId={id}**
+#### **GET /api/v1/ferramentas?proprietarioId={id}**
 
 Retorna todas as ferramentas de um determinado proprietário.
 
