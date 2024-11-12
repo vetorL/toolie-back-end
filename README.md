@@ -203,7 +203,7 @@ Retorna todas as ferramentas de um determinado proprietário.
 
 #### **GET /api/v1/usuarios/{id}/ferramentas-alugadas**
 
-Retorna uma lista de ferramentas que o usuário (locatário) já alugou.
+Retorna uma lista de ferramentas que o usuário já alugou no passado / está alugando no presente.
 
 ```json
 [
