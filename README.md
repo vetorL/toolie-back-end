@@ -38,21 +38,25 @@ Retorna uma lista de todos os usuários cadastrados.
 [
   {
     "id": 1,
-    "nome": "Ana Souza",
-    "email": "ana@example.com",
-    "telefone": "123456789",
-    "endereco": "Rua ABC, 123",
-    "status_conta": "verificado",
-    "avaliacao": 4.8
+    "nome": "João",
+    "email": "joao@gmail.com",
+    "telefone": "1234567890",
+    "endereco": "Endereço Proprietario",
+    "fotoDocumentoURL": "fotoURL",
+    "statusConta": "VERIFICACAO_PENDENTE",
+    "flagLocador": false,
+    "flagLocatario": false
   },
   {
     "id": 2,
-    "nome": "Carlos Dias",
-    "email": "carlos@example.com",
-    "telefone": "987654321",
-    "endereco": "Rua XYZ, 456",
-    "status_conta": "pendente",
-    "avaliacao": 4.5
+    "nome": "Yoel",
+    "email": "yoel@gmail.com",
+    "telefone": "12345678490",
+    "endereco": "Endereço Proprietario4",
+    "fotoDocumentoURL": "fotoURL4",
+    "statusConta": "VERIFICACAO_PENDENTE",
+    "flagLocador": false,
+    "flagLocatario": false
   }
 ]
 ```
@@ -63,13 +67,15 @@ Retorna os detalhes de um usuário específico pelo ID.
 
 ```json
 {
-  "id": 1,
-  "nome": "Ana Souza",
-  "email": "ana@example.com",
-  "telefone": "123456789",
-  "endereco": "Rua ABC, 123",
-  "status_conta": "verificado",
-  "avaliacao": 4.8
+  "id": 5,
+  "nome": "Jorge",
+  "email": "jorge@gmail.com",
+  "telefone": "1234567890",
+  "endereco": "Endereço 1",
+  "fotoDocumentoURL": "url1",
+  "statusConta": "VERIFICACAO_PENDENTE",
+  "flagLocador": false,
+  "flagLocatario": false
 }
 ```
 

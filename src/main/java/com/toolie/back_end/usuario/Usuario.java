@@ -32,12 +32,12 @@ public class Usuario {
 
     private final String endereco;
 
-    private final String foto_documento_URL;
+    private final String fotoDocumentoURL;
 
     private final StatusConta statusConta = StatusConta.VERIFICACAO_PENDENTE;
 
-    private final boolean flag_locador = false;
+    private final boolean flagLocador = false;
 
-    private final boolean flag_locatario = false;
+    private final boolean flagLocatario = false;
 
 }
