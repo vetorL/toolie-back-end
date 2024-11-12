@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -67,7 +68,7 @@ public class DevelopmentConfig {
                     "Martelo de aço de 500g",
                     20,
                     "Centro",
-                    "https://images.tcdn.com.br/img/img_prod/750752/martelo_unha_27mm_cabo_de_madeira_envernizado_2107_1_8c3672c25b63305e1a7699b459c68e41.jpg",
+                    Collections.singletonList("https://images.tcdn.com.br/img/img_prod/750752/martelo_unha_27mm_cabo_de_madeira_envernizado_2107_1_8c3672c25b63305e1a7699b459c68e41.jpg"),
                     "Condições adequadas",
                     "Retirada no local"
             );
@@ -81,7 +82,7 @@ public class DevelopmentConfig {
                             "Chave de fenda Philips",
                             50,
                             "Zona Sul",
-                            "https://fken.vtexassets.com/arquivos/ids/287724-800-800?v=638556334742100000&width=800&height=800&aspect=true",
+                            Collections.singletonList("https://fken.vtexassets.com/arquivos/ids/287724-800-800?v=638556334742100000&width=800&height=800&aspect=true"),
                             "Condições novas",
                             "Entrega disponível"
                     )

@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 
 import static org.mockito.Mockito.*;
@@ -60,7 +61,7 @@ public class AluguelControllerTests {
                 "Martelo de aço de 500g",
                 20,
                 "Centro",
-                "fotosURL1",
+                Collections.singletonList("fotosURL1"),
                 "Condições adequadas",
                 "Retirada no local"
         );

@@ -1,27 +1,24 @@
 package com.toolie.back_end;
 
-import com.toolie.back_end.ferramenta.Disponibilidade;
-import com.toolie.back_end.usuario.Usuario;
 import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.ferramenta.FerramentaController;
 import com.toolie.back_end.ferramenta.FerramentaRepository;
+import com.toolie.back_end.usuario.Usuario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(FerramentaController.class)
 public class FerramentaControllerTests {
@@ -47,7 +44,7 @@ public class FerramentaControllerTests {
                 "Martelo de aço de 500g",
                 20,
                 "Centro",
-                "fotosURL1",
+                Collections.singletonList("fotosURL1"),
                 "Condições adequadas",
                 "Retirada no local"
         );
@@ -59,7 +56,7 @@ public class FerramentaControllerTests {
                 "Chave de fenda Philips",
                 50,
                 "Zona Sul",
-                "fotosURL2",
+                Collections.singletonList("fotosURL2"),
                 "Condições novas",
                 "Entrega disponível"
         );
@@ -126,8 +123,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), "Handle with care", "Delivery available");
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), "Handle with care", "Pick up only");
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1);
 
         when(ferramentaRepository.searchByTipoFerramenta("Drill")).thenReturn(ferramentas);
@@ -142,8 +139,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithoutQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", "foto1.jpg", "Handle with care", "Delivery available");
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", "foto2.jpg", "Handle with care", "Pick up only");
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), "Handle with care", "Delivery available");
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), "Handle with care", "Pick up only");
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1, ferramenta2);
 
         when(ferramentaRepository.findAll()).thenReturn(ferramentas);

@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor(force = true)
@@ -32,7 +34,8 @@ public class Ferramenta {
 
     private final String localizacao;
 
-    private final String fotosURL;
+    @ElementCollection
+    private final List<String> fotosURL;
 
     private final String condicoesDeUso;
 

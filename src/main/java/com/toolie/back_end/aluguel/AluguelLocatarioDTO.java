@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class AluguelLocatarioDTO {
@@ -17,7 +18,7 @@ public class AluguelLocatarioDTO {
     private Date dataFim;
 
     private String statusAluguel;
-    private String fotoFerramentaURL;
+    private List<String> fotosFerramentaURL;
 
     // Static method to create AluguelLocatarioDTO from Aluguel entity
     public static AluguelLocatarioDTO fromAluguel(Aluguel aluguel) {
@@ -27,7 +28,7 @@ public class AluguelLocatarioDTO {
         dto.setDataInicio(aluguel.getDataInicio());  // Assuming Aluguel has a getDataInicio() method
         dto.setDataFim(aluguel.getDataFim());  // Assuming Aluguel has a getDataFim() method
         dto.setStatusAluguel(aluguel.getStatusAluguel());  // Assuming Aluguel has a getStatusAluguel() method
-        dto.setFotoFerramentaURL(aluguel.getFerramenta().getFotosURL());  // Assuming Aluguel has a getFotoFerramentaURL() method
+        dto.setFotosFerramentaURL(aluguel.getFerramenta().getFotosURL());  // Assuming Aluguel has a getFotoFerramentaURL() method
         return dto;
     }
 }
