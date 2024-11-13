@@ -2,9 +2,9 @@
 
 Este repositório contém o back-end da API Toolie, desenvolvida para a disciplina **Resolução de Problemas II**. A API é construída usando **Spring Boot** e fornece funcionalidades para o aluguel de ferramentas entre usuários.
 
-A API está atualmente disponível na seguinte URL: https://toolie-api.onrender.com. 
+A API está atualmente disponível na seguinte URL: https://toolie-back-end.onrender.com.
 
-> **Nota**: Caso a API tenha ficado inativa por muito tempo é capaz que ela não responda por alguns minutos. 
+> **Nota**: Caso a API tenha ficado inativa por muito tempo é capaz que ela não responda por alguns minutos.
 > É só esperar que ela eventualmente volta a funcionar.
 
 ## Rodando a API
