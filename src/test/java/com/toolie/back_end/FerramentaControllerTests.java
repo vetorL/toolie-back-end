@@ -39,6 +39,8 @@ public class FerramentaControllerTests {
     void setup() {
         proprietario = new Usuario("João", "joao@gmail.com", "1234567890", "Endereço Proprietario", "fotoURL");
 
+        proprietario.setId(777);
+
         ferramenta1 = new Ferramenta(
                 proprietario,
                 "Martelo",
@@ -79,8 +81,7 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$[0].fotosURL").value("fotosURL1"))
                 .andExpect(jsonPath("$[0].condicoesDeUso").value("Condições adequadas"))
                 .andExpect(jsonPath("$[0].opcoesDeEntrega").value("Retirada no local"))
-                .andExpect(jsonPath("$[0].proprietario.nome").value("João"))
-                .andExpect(jsonPath("$[0].proprietario.email").value("joao@gmail.com"))
+                .andExpect(jsonPath("$[0].proprietarioId").value("777"))
 
                 .andExpect(jsonPath("$[1].tipoFerramenta").value("Chave de fenda"))
                 .andExpect(jsonPath("$[1].estadoDeUso").value("Novo"))
@@ -90,8 +91,7 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$[1].fotosURL").value("fotosURL2"))
                 .andExpect(jsonPath("$[1].condicoesDeUso").value("Condições novas"))
                 .andExpect(jsonPath("$[1].opcoesDeEntrega").value("Entrega disponível"))
-                .andExpect(jsonPath("$[1].proprietario.nome").value("João"))
-                .andExpect(jsonPath("$[1].proprietario.email").value("joao@gmail.com"));
+                .andExpect(jsonPath("$[0].proprietarioId").value("777"));
     }
 
     @Test
@@ -109,8 +109,8 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$.fotosURL").value("fotosURL1"))
                 .andExpect(jsonPath("$.condicoesDeUso").value("Condições adequadas"))
                 .andExpect(jsonPath("$.opcoesDeEntrega").value("Retirada no local"))
-                .andExpect(jsonPath("$.proprietario.nome").value("João"))
-                .andExpect(jsonPath("$.proprietario.email").value("joao@gmail.com"));
+                .andExpect(jsonPath("$.proprietarioId").value("777"))
+        ;
     }
 
     @Test
@@ -165,8 +165,8 @@ public class FerramentaControllerTests {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].tipoFerramenta").value("Martelo"))
                 .andExpect(jsonPath("$[1].tipoFerramenta").value("Chave de fenda"))
-                .andExpect(jsonPath("$[0].proprietario.nome").value("João"))
-                .andExpect(jsonPath("$[1].proprietario.nome").value("João"));
+                .andExpect(jsonPath("$[0].proprietarioId").value("777"))
+                .andExpect(jsonPath("$[1].proprietarioId").value("777"));
     }
 
     @Test

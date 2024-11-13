@@ -19,27 +19,39 @@ public class FerramentaController {
     }
 
     @GetMapping("{id}")
-    public Ferramenta getFerramenta(@PathVariable Long id) {
-        return ferramentaRepository.findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Ferramenta não encontrada."));
+    public FerramentaDTO getFerramenta(@PathVariable Long id) {
+        return FerramentaDTO.fromFerramenta(ferramentaRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Ferramenta não encontrada.")));
     }
 
     @GetMapping
-    public List<Ferramenta> getFerramentasByTipoFerramenta(@RequestParam(required = false) String q) {
+    public List<FerramentaDTO> getFerramentasByTipoFerramenta(@RequestParam(required = false) String q) {
+        List<Ferramenta> ferramentas;
         if (q != null) {
-            return ferramentaRepository.searchByTipoFerramenta(q);
+            ferramentas = ferramentaRepository.searchByTipoFerramenta(q);
+        } else {
+            ferramentas = (List<Ferramenta>) ferramentaRepository.findAll();
         }
-        return (List<Ferramenta>) ferramentaRepository.findAll();
+        return ferramentas.stream().map(this::mapToDTO).toList();
     }
 
     @GetMapping(params = "proprietarioId")
-    public List<Ferramenta> getFerramentasByUserId(@RequestParam String proprietarioId) {
+    public List<FerramentaDTO> getFerramentasByUserId(@RequestParam String proprietarioId) {
         try {
             Long id = parseLong(proprietarioId);
-            return ferramentaRepository.findByProprietarioId(id);
+            return ferramentaRepository.findByProprietarioId(id)
+                    .stream()
+                    .map(this::mapToDTO)
+                    .toList();
         } catch (NumberFormatException e) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "proprietarioId deve ser um número");
         }
+    }
+
+    // Private method to map Ferramenta entity to FerramentaDTO
+    private FerramentaDTO mapToDTO(Ferramenta ferramenta) {
+        // Using the static method from FerramentaDTO to convert the Ferramenta entity to DTO
+        return FerramentaDTO.fromFerramenta(ferramenta);
     }
 
 }
