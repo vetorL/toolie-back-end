@@ -30,9 +30,22 @@ public class AluguelController {
                 .collect(Collectors.toList());
     }
 
-    @GetMapping("/usuarios/{userId}/ferramentas-em-aluguel")
-    public List<Aluguel> ferramentasEmAluguel(@PathVariable long userId) {
-        return aluguelRepository.findByLocadorIdAndFerramentaDisponibilidade(userId, Disponibilidade.ALUGADA);
+    @GetMapping("/usuarios/{id}/ferramentas-em-aluguel")
+    public List<FerramentaEmAluguelDTO> getFerramentasEmAluguel(@PathVariable long id) {
+        // Busca todos os aluguéis onde o usuário é locador e a ferramenta está alugada
+        List<Aluguel> alugueis = aluguelRepository.findByLocadorIdAndFerramentaDisponibilidade(id, Disponibilidade.ALUGADA);
+
+        // Mapeia os aluguéis para o DTO
+        return alugueis.stream()
+                .map(aluguel -> new FerramentaEmAluguelDTO(
+                        aluguel.getId(),
+                        aluguel.getFerramenta().getTipoFerramenta(),
+                        aluguel.getLocatario().getNome(),
+                        aluguel.getDataInicio(),
+                        aluguel.getDataFim(),
+                        aluguel.getStatusAluguel()
+                ))
+                .collect(Collectors.toList());
     }
 
     // Private method to map Aluguel entity to AluguelLocatarioDTO

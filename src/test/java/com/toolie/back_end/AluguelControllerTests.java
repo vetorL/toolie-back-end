@@ -126,8 +126,8 @@ public class AluguelControllerTests {
         mockMvc.perform(get("/api/v1/usuarios/{userId}/ferramentas-em-aluguel", 1L)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())  // Status should be OK
-                .andExpect(jsonPath("$[0].statusAluguel").value("ativo"))  // Check the first aluguel
-                .andExpect(jsonPath("$[1].statusAluguel").value("ativo"));  // Check the second aluguel
+                .andExpect(jsonPath("$[0].status").value("ativo"))  // Check the first aluguel
+                .andExpect(jsonPath("$[1].status").value("ativo"));  // Check the second aluguel
 
         // Verify that the repository was called once
         verify(aluguelRepository, times(1)).findByLocadorIdAndFerramentaDisponibilidade(1L, Disponibilidade.ALUGADA);
