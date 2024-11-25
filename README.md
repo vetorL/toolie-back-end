@@ -102,7 +102,8 @@ Retorna uma lista de todas as ferramentas cadastradas.
       "https://images.tcdn.com.br/img/img_prod/750752/martelo_unha_27mm_cabo_de_madeira_envernizado_2107_1_8c3672c25b63305e1a7699b459c68e41.jpg"
     ],
     "condicoesDeUso": "Condições adequadas",
-    "opcoesDeEntrega": "Retirada no local"
+    "opcoesDeEntrega": "Retirada no local",
+    "categoria": "Construção"
   },
   {
     "id": 2,
@@ -117,7 +118,8 @@ Retorna uma lista de todas as ferramentas cadastradas.
       "https://fken.vtexassets.com/arquivos/ids/287724-800-800?v=638556334742100000&width=800&height=800&aspect=true"
     ],
     "condicoesDeUso": "Condições novas",
-    "opcoesDeEntrega": "Entrega disponível"
+    "opcoesDeEntrega": "Entrega disponível",
+    "categoria": "Construção"
   }
 ]
 ```
@@ -140,7 +142,8 @@ Retorna os detalhes de uma ferramenta específica pelo ID.
     "https://images.tcdn.com.br/img/img_prod/750752/martelo_unha_27mm_cabo_de_madeira_envernizado_2107_1_8c3672c25b63305e1a7699b459c68e41.jpg"
   ],
   "condicoesDeUso": "Condições adequadas",
-  "opcoesDeEntrega": "Retirada no local"
+  "opcoesDeEntrega": "Retirada no local",
+  "categoria": "Construção"
 }
 ```
 
@@ -151,19 +154,20 @@ Busca ferramentas com base em uma query fornecida.
 ```json
 [
   {
-    "id": 2,
-    "proprietarioId": 2,
-    "tipoFerramenta": "Chave de fenda",
-    "estadoDeUso": "Novo",
-    "descricao": "Chave de fenda Philips",
-    "precoAluguel": 50.0,
+    "id": 1,
+    "proprietarioId": 3,
+    "tipoFerramenta": "Martelo",
+    "estadoDeUso": "Usado",
+    "descricao": "Martelo de aço de 500g",
+    "precoAluguel": 20.0,
     "disponibilidade": "Disponível",
-    "localizacao": "Zona Sul",
+    "localizacao": "Centro",
     "fotosURL": [
-      "https://fken.vtexassets.com/arquivos/ids/287724-800-800?v=638556334742100000&width=800&height=800&aspect=true"
+      "https://images.tcdn.com.br/img/img_prod/750752/martelo_unha_27mm_cabo_de_madeira_envernizado_2107_1_8c3672c25b63305e1a7699b459c68e41.jpg"
     ],
-    "condicoesDeUso": "Condições novas",
-    "opcoesDeEntrega": "Entrega disponível"
+    "condicoesDeUso": "Condições adequadas",
+    "opcoesDeEntrega": "Retirada no local",
+    "categoria": "Construção"
   }
 ]
 ```
@@ -187,7 +191,8 @@ Retorna todas as ferramentas de um determinado proprietário.
       "https://images.tcdn.com.br/img/img_prod/750752/martelo_unha_27mm_cabo_de_madeira_envernizado_2107_1_8c3672c25b63305e1a7699b459c68e41.jpg"
     ],
     "condicoesDeUso": "Condições adequadas",
-    "opcoesDeEntrega": "Retirada no local"
+    "opcoesDeEntrega": "Retirada no local",
+    "categoria": "Construção"
   }
 ]
 ```
