@@ -64,7 +64,8 @@ public class AluguelControllerTests {
                 "Centro",
                 Collections.singletonList("fotosURL1"),
                 "Condições adequadas",
-                "Retirada no local"
+                "Retirada no local",
+                "Construção"
         );
 
         // Initialize MockMvc to simulate HTTP requests

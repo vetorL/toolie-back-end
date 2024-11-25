@@ -41,4 +41,6 @@ public class Ferramenta {
 
     private final String opcoesDeEntrega;
 
+    private final String categoria;
+
 }

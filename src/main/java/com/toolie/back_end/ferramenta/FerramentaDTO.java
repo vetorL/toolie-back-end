@@ -1,6 +1,5 @@
 package com.toolie.back_end.ferramenta;
 
-import com.toolie.back_end.usuario.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -32,6 +31,8 @@ public class FerramentaDTO {
 
     private String opcoesDeEntrega;
 
+    private String categoria;
+
     public static FerramentaDTO fromFerramenta(Ferramenta ferramenta) {
         return new FerramentaDTO(
                 ferramenta.getId(),
@@ -44,7 +45,8 @@ public class FerramentaDTO {
                 ferramenta.getLocalizacao(),
                 ferramenta.getFotosURL(),
                 ferramenta.getCondicoesDeUso(),
-                ferramenta.getOpcoesDeEntrega()
+                ferramenta.getOpcoesDeEntrega(),
+                ferramenta.getCategoria()
         );
     }
 
