@@ -33,6 +33,8 @@ public class FerramentaDTO {
 
     private String categoria;
 
+    private double rating;
+
     public static FerramentaDTO fromFerramenta(Ferramenta ferramenta) {
         return new FerramentaDTO(
                 ferramenta.getId(),
@@ -46,7 +48,8 @@ public class FerramentaDTO {
                 ferramenta.getFotosURL(),
                 ferramenta.getCondicoesDeUso(),
                 ferramenta.getOpcoesDeEntrega(),
-                ferramenta.getCategoria()
+                ferramenta.getCategoria(),
+                ferramenta.getRating()
         );
     }
 

@@ -43,4 +43,6 @@ public class Ferramenta {
 
     private final String categoria;
 
+    private final double rating;
+
 }

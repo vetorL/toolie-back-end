@@ -103,7 +103,8 @@ Retorna uma lista de todas as ferramentas cadastradas.
     ],
     "condicoesDeUso": "Condições adequadas",
     "opcoesDeEntrega": "Retirada no local",
-    "categoria": "Construção"
+    "categoria": "Construção",
+    "rating": 5.0
   },
   {
     "id": 2,
@@ -119,7 +120,8 @@ Retorna uma lista de todas as ferramentas cadastradas.
     ],
     "condicoesDeUso": "Condições novas",
     "opcoesDeEntrega": "Entrega disponível",
-    "categoria": "Construção"
+    "categoria": "Construção",
+    "rating": 4.5
   }
 ]
 ```
@@ -143,7 +145,8 @@ Retorna os detalhes de uma ferramenta específica pelo ID.
   ],
   "condicoesDeUso": "Condições adequadas",
   "opcoesDeEntrega": "Retirada no local",
-  "categoria": "Construção"
+  "categoria": "Construção",
+  "rating": 5.0
 }
 ```
 
@@ -167,7 +170,8 @@ Busca ferramentas com base em uma query fornecida.
     ],
     "condicoesDeUso": "Condições adequadas",
     "opcoesDeEntrega": "Retirada no local",
-    "categoria": "Construção"
+    "categoria": "Construção",
+    "rating": 5.0
   }
 ]
 ```
@@ -192,7 +196,8 @@ Retorna todas as ferramentas de um determinado proprietário.
     ],
     "condicoesDeUso": "Condições adequadas",
     "opcoesDeEntrega": "Retirada no local",
-    "categoria": "Construção"
+    "categoria": "Construção",
+    "rating": 5.0
   }
 ]
 ```
