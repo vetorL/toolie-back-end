@@ -229,24 +229,7 @@ Retorna uma lista de ferramentas que o usuário já alugou no passado / está al
 
 ---
 
-### **Endpoints em Construção**
-
-#### **GET /usuarios/{id}/ferramentas-em-aluguel**
-
-Retorna as ferramentas que um locador tem alugadas.
-
-```json
-[
-  {
-    "id": 3,
-    "nome": "Esmerilhadeira",
-    "locatario": "Maria Silva",
-    "data_inicio": "2023-11-05",
-    "data_fim": "2023-11-10",
-    "status": "em uso"
-  }
-]
-```
+### **Entidade Aluguel**
 
 #### **POST /alugueis**
 
@@ -278,6 +261,27 @@ Realiza a devolução de uma ferramenta.
   "status": "devolvido",
   "data_devolucao": "2023-11-20"
 }
+```
+
+---
+
+### **Endpoints em Construção**
+
+#### **GET /usuarios/{id}/ferramentas-em-aluguel**
+
+Retorna as ferramentas que um locador tem alugadas.
+
+```json
+[
+  {
+    "id": 3,
+    "nome": "Esmerilhadeira",
+    "locatario": "Maria Silva",
+    "data_inicio": "2023-11-05",
+    "data_fim": "2023-11-10",
+    "status": "em uso"
+  }
+]
 ```
 
 #### **POST /avaliacoes**

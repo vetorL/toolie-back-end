@@ -1,5 +1,6 @@
 package com.toolie.back_end.aluguel;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.usuario.Usuario;
 import jakarta.persistence.*;
@@ -31,9 +32,14 @@ public class Aluguel {
     @JoinColumn(name = "ferramenta_id")
     private final Ferramenta ferramenta;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private final Date dataInicio;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private final Date dataFim;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private final Date dataDevolucao;
 
     private final String statusAluguel;
 
