@@ -5,15 +5,13 @@ import com.toolie.back_end.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 
 @Data
 @Entity
-@RequiredArgsConstructor
-@NoArgsConstructor(force = true)
+@NoArgsConstructor
 public class Avaliacao {
 
     @Id
@@ -33,6 +31,5 @@ public class Avaliacao {
     private final String comentario;
 
     @CreationTimestamp
-    private Date data_avaliacao;
-
+    private final Date data_avaliacao;
 }
