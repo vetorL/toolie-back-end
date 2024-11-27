@@ -510,11 +510,11 @@ public class DevelopmentConfig {
             Date dataFim = new Date(dataInicio.getTime() + 86400000L);
 
             List<Aluguel> alugueis = Arrays.asList(
-                    new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, "ativo", "pago", "20.0", "retirada no local"),
-                    new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, "ativo", "pago", "30.0", "envio por motoboy"),
-                    new Aluguel(locatario, proprietario1, ferramenta1, dataInicio, dataFim, "concluído", "pago", "25.0", "retirada no local"),
-                    new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, "cancelado", "não pago", "15.0", "não aplicável"),
-                    new Aluguel(proprietario1, locador, ferramenta1, dataInicio, dataFim, "ativo", "pago", "50.0", "envio por motoboy")
+                    new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, null, "ativo", "pago", "20.0", "retirada no local"),
+                    new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, null, "ativo", "pago", "30.0", "envio por motoboy"),
+                    new Aluguel(locatario, proprietario1, ferramenta1, dataInicio, dataFim, dataFim, "concluído", "pago", "25.0", "retirada no local"),
+                    new Aluguel(locador, locatario, ferramenta1, dataInicio, dataFim, null, "cancelado", "não pago", "15.0", "não aplicável"),
+                    new Aluguel(proprietario1, locador, ferramenta1, dataInicio, dataFim, null, "ativo", "pago", "50.0", "envio por motoboy")
             );
 
             aluguelRepository.saveAll(alugueis);
