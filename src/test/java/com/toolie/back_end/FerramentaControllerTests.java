@@ -42,7 +42,7 @@ public class FerramentaControllerTests {
         ferramenta1 = new Ferramenta(
                 proprietario,
                 "Martelo",
-                "Usado",
+                EstadoDeUso.USADO,
                 "Martelo de aço de 500g",
                 20,
                 "Centro",
@@ -56,7 +56,7 @@ public class FerramentaControllerTests {
         ferramenta2 = new Ferramenta(
                 proprietario,
                 "Chave de fenda",
-                "Novo",
+                EstadoDeUso.NOVO,
                 "Chave de fenda Philips",
                 50,
                 "Zona Sul",
@@ -127,8 +127,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), CondicoesDeUso.BOM, "Delivery available", Categoria.CONSTRUCAO, 4.5);
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), CondicoesDeUso.BOM, "Pick up only", Categoria.CONSTRUCAO, 4.5);
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", EstadoDeUso.NOVO, "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), CondicoesDeUso.BOM, "Delivery available", Categoria.CONSTRUCAO, 4.5);
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", EstadoDeUso.USADO, "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), CondicoesDeUso.BOM, "Pick up only", Categoria.CONSTRUCAO, 4.5);
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1);
 
         when(ferramentaRepository.searchByTipoFerramenta("Drill")).thenReturn(ferramentas);
@@ -143,8 +143,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithoutQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), CondicoesDeUso.BOM, "Delivery available", Categoria.CONSTRUCAO, 4.5);
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), CondicoesDeUso.BOM, "Pick up only", Categoria.CONSTRUCAO, 4.5);
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", EstadoDeUso.NOVO, "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), CondicoesDeUso.BOM, "Delivery available", Categoria.CONSTRUCAO, 4.5);
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", EstadoDeUso.USADO, "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), CondicoesDeUso.BOM, "Pick up only", Categoria.CONSTRUCAO, 4.5);
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1, ferramenta2);
 
         when(ferramentaRepository.findAll()).thenReturn(ferramentas);

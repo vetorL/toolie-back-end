@@ -15,7 +15,7 @@ public class FerramentaDTO {
 
     private String tipoFerramenta;
 
-    private String estadoDeUso;
+    private EstadoDeUso estadoDeUso;
 
     private String descricao;
 

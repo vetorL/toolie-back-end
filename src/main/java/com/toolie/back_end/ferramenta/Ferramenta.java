@@ -24,7 +24,7 @@ public class Ferramenta {
 
     private final String tipoFerramenta;
 
-    private final String estadoDeUso;
+    private final EstadoDeUso estadoDeUso;
 
     private final String descricao;
 

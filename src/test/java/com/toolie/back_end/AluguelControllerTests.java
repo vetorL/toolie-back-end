@@ -90,7 +90,7 @@ public class AluguelControllerTests {
         ferramenta1 = new Ferramenta(
                 locador,
                 "Martelo",
-                "Usado",
+                EstadoDeUso.USADO,
                 "Martelo de aço de 500g",
                 20,
                 "Centro",

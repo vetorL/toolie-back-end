@@ -2,10 +2,7 @@ package com.toolie.back_end.config;
 
 import com.toolie.back_end.aluguel.Aluguel;
 import com.toolie.back_end.aluguel.AluguelRepository;
-import com.toolie.back_end.ferramenta.Categoria;
-import com.toolie.back_end.ferramenta.CondicoesDeUso;
-import com.toolie.back_end.ferramenta.Ferramenta;
-import com.toolie.back_end.ferramenta.FerramentaRepository;
+import com.toolie.back_end.ferramenta.*;
 import com.toolie.back_end.usuario.Usuario;
 import com.toolie.back_end.usuario.UsuarioRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -56,7 +53,7 @@ public class DevelopmentConfig {
             Ferramenta ferramenta1 = new Ferramenta(
                     locador,
                     "Martelo",
-                    "Usado",
+                    EstadoDeUso.USADO,
                     "Martelo de aço de 500g",
                     20,
                     "Centro",
@@ -72,7 +69,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario2,
                             "Chave de fenda",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Chave de fenda Philips",
                             50,
                             "Zona Sul",
@@ -85,7 +82,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario1,
                             "Furadeira",
-                            "Usada",
+                            EstadoDeUso.USADO,
                             "Furadeira elétrica de alta potência",
                             100,
                             "Zona Norte",
@@ -101,7 +98,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locador,
                             "Serra Circular",
-                            "Quase nova",
+                            EstadoDeUso.NOVO,
                             "Serra circular com lâmina de 7 polegadas",
                             120,
                             "Centro",
@@ -114,7 +111,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario1,
                             "Alicate Universal",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Alicate universal de alta resistência",
                             25,
                             "Centro",
@@ -127,7 +124,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locador,
                             "Parafusadeira",
-                            "Usada",
+                            EstadoDeUso.USADO,
                             "Parafusadeira elétrica com bateria recarregável",
                             90,
                             "Zona Oeste",
@@ -140,7 +137,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario2,
                             "Nível de Bolha",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Nível de bolha de 1 metro",
                             15,
                             "Zona Norte",
@@ -153,7 +150,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locatario,
                             "Marreta",
-                            "Usada",
+                            EstadoDeUso.USADO,
                             "Marreta de 1kg para demolições",
                             30,
                             "Zona Sul",
@@ -166,7 +163,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locador,
                             "Escada Telescópica",
-                            "Quase nova",
+                            EstadoDeUso.NOVO,
                             "Escada telescópica de alumínio de 3 metros",
                             150,
                             "Centro",
@@ -179,7 +176,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario1,
                             "Chave Inglesa",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Chave inglesa ajustável de 10 polegadas",
                             20,
                             "Zona Leste",
@@ -192,7 +189,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario2,
                             "Serrote",
-                            "Usado",
+                            EstadoDeUso.USADO,
                             "Serrote de poda com cabo ergonômico",
                             25,
                             "Zona Sul",
@@ -205,7 +202,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locatario,
                             "Compressor de Ar",
-                            "Usado",
+                            EstadoDeUso.USADO,
                             "Compressor portátil de 50 litros",
                             200,
                             "Zona Oeste",
@@ -218,7 +215,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locador,
                             "Roçadeira",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Roçadeira a gasolina de alta performance",
                             300,
                             "Centro",
@@ -231,7 +228,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario1,
                             "Pistola de Pintura",
-                            "Quase nova",
+                            EstadoDeUso.NOVO,
                             "Pistola de pintura HVLP com ajuste fino",
                             80,
                             "Zona Norte",
@@ -244,7 +241,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locador,
                             "Betoneira",
-                            "Usada",
+                            EstadoDeUso.USADO,
                             "Betoneira elétrica de 120 litros, ideal para misturar concreto.",
                             150.0,
                             "Centro",
@@ -257,7 +254,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario2,
                             "Prumo de Pedreiro",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Prumo de pedreiro com cordão de 2 metros.",
                             10.0,
                             "Zona Norte",
@@ -270,7 +267,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario1,
                             "Esquadro de Aço",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Esquadro de aço inoxidável para medições precisas.",
                             25.0,
                             "Zona Sul",
@@ -283,7 +280,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locador,
                             "Martelo Demolidor",
-                            "Usado",
+                            EstadoDeUso.USADO,
                             "Martelo demolidor elétrico de 10kg.",
                             200.0,
                             "Centro",
@@ -296,7 +293,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario1,
                             "Ponteira para Demolição",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Ponteira compatível com martelos demolidores.",
                             15.0,
                             "Zona Oeste",
@@ -309,7 +306,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locador,
                             "Chave Stilson",
-                            "Usada",
+                            EstadoDeUso.USADO,
                             "Chave de cano ajustável de 24 polegadas.",
                             40.0,
                             "Zona Leste",
@@ -322,7 +319,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario2,
                             "Válvula de Teste de Pressão",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Válvula para teste de pressão em encanamentos.",
                             30.0,
                             "Centro",
@@ -335,7 +332,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario1,
                             "Cortador de Tubos",
-                            "Quase novo",
+                            EstadoDeUso.SEMINOVO,
                             "Cortador de tubos metálicos e PVC.",
                             35.0,
                             "Zona Norte",
@@ -348,7 +345,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locatario,
                             "Desentupidor de Cano",
-                            "Novo",
+                            EstadoDeUso.SEMINOVO,
                             "Ferramenta elétrica para desentupimento de canos.",
                             100.0,
                             "Zona Sul",
@@ -361,7 +358,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario1,
                             "Chave para Porca de Registro",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Chave para ajustar registros de água.",
                             15.0,
                             "Zona Oeste",
@@ -374,7 +371,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario2,
                             "Alicate Descascador de Fios",
-                            "Novo",
+                            EstadoDeUso.SEMINOVO,
                             "Alicate para descascar fios de até 6mm.",
                             25.0,
                             "Zona Norte",
@@ -387,7 +384,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locador,
                             "Multímetro Digital",
-                            "Usado",
+                            EstadoDeUso.USADO,
                             "Multímetro digital para medição de tensão e corrente.",
                             50.0,
                             "Centro",
@@ -400,7 +397,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario1,
                             "Detector de Tensão",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Detector de tensão sem contato.",
                             20.0,
                             "Zona Sul",
@@ -413,7 +410,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locatario,
                             "Furadeira de Impacto",
-                            "Usada",
+                            EstadoDeUso.USADO,
                             "Furadeira de impacto com broca para concreto.",
                             90.0,
                             "Zona Leste",
@@ -426,7 +423,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario2,
                             "Teste de Tomadas",
-                            "Novo",
+                            EstadoDeUso.SEMINOVO,
                             "Dispositivo para testar tomadas elétricas.",
                             15.0,
                             "Zona Oeste",
@@ -439,7 +436,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locador,
                             "Aparador de Cerca Viva",
-                            "Usado",
+                            EstadoDeUso.USADO,
                             "Aparador elétrico de 500W.",
                             120.0,
                             "Centro",
@@ -452,7 +449,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario1,
                             "Pulverizador Manual",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Pulverizador manual de 2 litros.",
                             20.0,
                             "Zona Norte",
@@ -465,7 +462,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             proprietario2,
                             "Tesoura de Poda",
-                            "Quase nova",
+                            EstadoDeUso.NOVO,
                             "Tesoura de poda ergonômica.",
                             30.0,
                             "Zona Sul",
@@ -478,7 +475,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locatario,
                             "Carrinho de Mão",
-                            "Usado",
+                            EstadoDeUso.USADO,
                             "Carrinho de mão com capacidade para 100kg.",
                             50.0,
                             "Zona Oeste",
@@ -491,7 +488,7 @@ public class DevelopmentConfig {
                     new Ferramenta(
                             locador,
                             "Foice",
-                            "Novo",
+                            EstadoDeUso.NOVO,
                             "Foice de aço com cabo de madeira.",
                             35.0,
                             "Zona Leste",
