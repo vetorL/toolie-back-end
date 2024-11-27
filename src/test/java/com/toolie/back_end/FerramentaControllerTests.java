@@ -1,5 +1,6 @@
 package com.toolie.back_end;
 
+import com.toolie.back_end.ferramenta.Categoria;
 import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.ferramenta.FerramentaController;
 import com.toolie.back_end.ferramenta.FerramentaRepository;
@@ -51,7 +52,7 @@ public class FerramentaControllerTests {
                 Collections.singletonList("fotosURL1"),
                 "Condições adequadas",
                 "Retirada no local",
-                "Construção",
+                Categoria.CONSTRUCAO,
                 4.5
         );
 
@@ -65,7 +66,7 @@ public class FerramentaControllerTests {
                 Collections.singletonList("fotosURL2"),
                 "Condições novas",
                 "Entrega disponível",
-                "Construção",
+                Categoria.CONSTRUCAO,
                 4.5
         );
     }
@@ -129,8 +130,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), "Handle with care", "Delivery available", "Construção", 4.5);
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), "Handle with care", "Pick up only", "Construção", 4.5);
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), "Handle with care", "Delivery available", Categoria.CONSTRUCAO, 4.5);
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), "Handle with care", "Pick up only", Categoria.CONSTRUCAO, 4.5);
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1);
 
         when(ferramentaRepository.searchByTipoFerramenta("Drill")).thenReturn(ferramentas);
@@ -145,8 +146,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithoutQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), "Handle with care", "Delivery available", "Construção", 4.5);
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), "Handle with care", "Pick up only", "Construção", 4.5);
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), "Handle with care", "Delivery available", Categoria.CONSTRUCAO, 4.5);
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), "Handle with care", "Pick up only", Categoria.CONSTRUCAO, 4.5);
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1, ferramenta2);
 
         when(ferramentaRepository.findAll()).thenReturn(ferramentas);

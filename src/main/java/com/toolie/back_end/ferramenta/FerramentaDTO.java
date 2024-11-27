@@ -31,7 +31,7 @@ public class FerramentaDTO {
 
     private String opcoesDeEntrega;
 
-    private String categoria;
+    private Categoria categoria;
 
     private double rating;
 

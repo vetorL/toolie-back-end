@@ -3,6 +3,7 @@ package com.toolie.back_end;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.toolie.back_end.aluguel.*;
+import com.toolie.back_end.ferramenta.Categoria;
 import com.toolie.back_end.ferramenta.Disponibilidade;
 import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.ferramenta.FerramentaRepository;
@@ -99,7 +100,7 @@ public class AluguelControllerTests {
                 Collections.singletonList("fotosURL1"),
                 "Condições adequadas",
                 "Retirada no local",
-                "Construção",
+                Categoria.CONSTRUCAO,
                 4.5
         );
 

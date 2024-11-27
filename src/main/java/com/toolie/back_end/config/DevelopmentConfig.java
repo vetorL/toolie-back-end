@@ -2,6 +2,7 @@ package com.toolie.back_end.config;
 
 import com.toolie.back_end.aluguel.Aluguel;
 import com.toolie.back_end.aluguel.AluguelRepository;
+import com.toolie.back_end.ferramenta.Categoria;
 import com.toolie.back_end.ferramenta.Ferramenta;
 import com.toolie.back_end.ferramenta.FerramentaRepository;
 import com.toolie.back_end.usuario.Usuario;
@@ -61,7 +62,7 @@ public class DevelopmentConfig {
                     Collections.singletonList("https://images.tcdn.com.br/img/img_prod/750752/martelo_unha_27mm_cabo_de_madeira_envernizado_2107_1_8c3672c25b63305e1a7699b459c68e41.jpg"),
                     "Condições adequadas",
                     "Retirada no local",
-                    "Construção",
+                    Categoria.CONSTRUCAO,
                     5
             );
 
@@ -77,7 +78,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://fken.vtexassets.com/arquivos/ids/287724-800-800?v=638556334742100000&width=800&height=800&aspect=true"),
                             "Condições novas",
                             "Entrega disponível",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             4.5
                     ),
                     new Ferramenta(
@@ -93,7 +94,7 @@ public class DevelopmentConfig {
                             ),
                             "Funciona perfeitamente, apenas marcas de uso.",
                             "Envio por motoboy disponível",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             4.8
                     ),
                     new Ferramenta(
@@ -106,7 +107,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://www.silvaselantes.com.br/media/catalog/product/cache/1/image/600x600/9df78eab33525d08d6e5fb8d27136e95/d/w/dwe560b2_1.png"),
                             "Pouco usada, em excelente estado.",
                             "Retirada no local",
-                            "Marcenaria",
+                            Categoria.CONSTRUCAO,
                             4.9
                     ),
                     new Ferramenta(
@@ -119,7 +120,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/2/468/1812/Alicate-Universal-Profissional-de-8-Pol-gedore-8280-200-iox1.JPG"),
                             "Ideal para trabalhos elétricos.",
                             "Retirada no local",
-                            "Ferramentas Manuais",
+                            Categoria.CONSTRUCAO,
                             4.7
                     ),
                     new Ferramenta(
@@ -132,7 +133,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://elastobor.vtexassets.com/arquivos/ids/261736/PARAFUSADEIRA-FURADEIRA-VONDER-3-8-PFV012-BATERIA-BIVOLT.jpg?v=638200154901200000"),
                             "Bateria em ótimo estado, acompanha carregador.",
                             "Entrega disponível",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             4.6
                     ),
                     new Ferramenta(
@@ -145,7 +146,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/46/448/130800/1569260399408.JPG"),
                             "Perfeito para medições precisas.",
                             "Retirada no local",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             5.0
                     ),
                     new Ferramenta(
@@ -158,7 +159,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/2/524/126087/Marreta-Oitavada-1000g-com-Cabo-de-Madei-sparta-10905551.JPG"),
                             "Ideal para trabalhos pesados.",
                             "Retirada no local",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             4.2
                     ),
                     new Ferramenta(
@@ -171,7 +172,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://images.tcdn.com.br/img/img_prod/625353/escada_telescopica_aluminio_0_80x3_20m_10_degraus_005121_16871_1_3b99f9a9779da721e6e6b078c7261761.jpg"),
                             "Fácil transporte e armazenamento.",
                             "Entrega disponível",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             4.8
                     ),
                     new Ferramenta(
@@ -184,7 +185,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://www.apmaquinaseferramentas.com.br/public-images/product/zoom-3662-AA92C.jpg"),
                             "Ferramenta resistente e ajustável.",
                             "Retirada no local",
-                            "Ferramentas Manuais",
+                            Categoria.CONSTRUCAO,
                             4.9
                     ),
                     new Ferramenta(
@@ -197,7 +198,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/31/274/20506/Serrote-Profissional-26-pol-tramontina-432420261.JPG"),
                             "Ótimo para trabalhos de jardinagem.",
                             "Entrega disponível",
-                            "Jardinagem",
+                            Categoria.JARDINAGEM,
                             4.4
                     ),
                     new Ferramenta(
@@ -210,7 +211,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/21/159/116480/1572956418719.JPG"),
                             "Em bom estado, ideal para oficinas.",
                             "Retirada no local",
-                            "Oficina",
+                            Categoria.CONSTRUCAO,
                             4.5
                     ),
                     new Ferramenta(
@@ -223,7 +224,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://cdn.awsli.com.br/2500x2500/1921/1921752/produto/130889289/ae49b3c53e.jpg"),
                             "Excelente para limpeza de terrenos.",
                             "Entrega disponível",
-                            "Jardinagem",
+                            Categoria.JARDINAGEM,
                             4.9
                     ),
                     new Ferramenta(
@@ -236,7 +237,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/24/244/19725/Pistola-de-Pintura-HVLP-600-ml-e-Bico-14-steula-bc75-141.JPG"),
                             "Ótima para pintura profissional.",
                             "Retirada no local",
-                            "Pintura",
+                            Categoria.CONSTRUCAO,
                             4.8
                     ),
                     new Ferramenta(
@@ -249,7 +250,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/31/284/147416/1596113228463.JPG"),
                             "Utilizar em local plano e seco.",
                             "Retirada no local",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             4.5
                     ),
                     new Ferramenta(
@@ -262,7 +263,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://static.superproatacado.com.br/storage/1000/prumo-pedreiro-700gr-economico-895024-kala-1582750242.jpg"),
                             "Manter o cordão livre de sujeira.",
                             "Entrega disponível",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             4.8
                     ),
                     new Ferramenta(
@@ -275,7 +276,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/31/270/94065/Esquadro-em-Aco-10-Pol-com-Cabo-PVC-momfort-6160101.JPG"),
                             "Limpar após o uso.",
                             "Retirada no local",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             5.0
                     ),
                     new Ferramenta(
@@ -288,7 +289,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://static.felap.com.br/public/felap/imagens/produtos/martelo-demolidor-encaixe-sextavado-30kg-220v-d25980-b2-dewalt-66267214cc0fe.jpg"),
                             "Apenas para uso em superfícies rígidas.",
                             "Retirada no local",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             4.7
                     ),
                     new Ferramenta(
@@ -301,7 +302,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://momfort.com.br/wp-content/uploads/2022/06/PONTEIRA-DE-ACO-STANDARD-3.jpg"),
                             "Usar com martelo demolidor apropriado.",
                             "Entrega disponível",
-                            "Construção",
+                            Categoria.CONSTRUCAO,
                             4.9
                     ),
                     new Ferramenta(
@@ -314,7 +315,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/2/248/92398/Chave-para-Tubo-tipo-Stillson-de-12-Pol--nove-54-3513000312-1.JPG"),
                             "Lubrificar após o uso.",
                             "Retirada no local",
-                            "Encanamento",
+                            Categoria.ENCANAMENTO,
                             4.6
                     ),
                     new Ferramenta(
@@ -327,7 +328,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://cdn.awsli.com.br/600x700/2587/2587765/produto/212675222fc85cb5d9f.jpg"),
                             "Seguir as instruções de uso fornecidas.",
                             "Entrega disponível",
-                            "Encanamento",
+                            Categoria.ENCANAMENTO,
                             4.8
                     ),
                     new Ferramenta(
@@ -340,7 +341,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://d8vlg9z1oftyc.cloudfront.net/arsystem/image/product/d207b5df387c835d7b3da0c3060b707120201211112624/850/cortador-de-tubos-com-escareador_7694.jpg"),
                             "Guardar em local seco.",
                             "Retirada no local",
-                            "Encanamento",
+                            Categoria.ENCANAMENTO,
                             4.7
                     ),
                     new Ferramenta(
@@ -353,7 +354,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://down-br.img.susercontent.com/file/5e575999c6f5b23c4345d451a31d5ec8"),
                             "Limpar a ferramenta após o uso.",
                             "Entrega disponível",
-                            "Encanamento",
+                            Categoria.ENCANAMENTO,
                             4.9
                     ),
                     new Ferramenta(
@@ -366,7 +367,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/48/634/257437488/chaveparap-idany-6002184147.JPG"),
                             "Manter em local seco.",
                             "Retirada no local",
-                            "Encanamento",
+                            Categoria.ENCANAMENTO,
                             5.0
                     ),
                     new Ferramenta(
@@ -379,7 +380,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://toolsbr.fbitsstatic.net/img/p/stanley-alicate-descascador-de-fios-175881/363433.jpg?w=1080&h=1080&v=202411111340&qs=ignore"),
                             "Evitar uso em fios energizados.",
                             "Entrega disponível",
-                            "Eletricista",
+                            Categoria.ELETRICA,
                             4.9
                     ),
                     new Ferramenta(
@@ -392,7 +393,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://images.tcdn.com.br/img/img_prod/632258/multimetro_digital_dt830b_1537_1_d7a76410b3c774a93002757bd7625292_20240109102843.jpg"),
                             "Não usar sob chuva.",
                             "Retirada no local",
-                            "Eletricista",
+                            Categoria.ELETRICA,
                             4.7
                     ),
                     new Ferramenta(
@@ -405,7 +406,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/19/189/121594/Detector-de-Tensao-DTV1210-12V-a-1000V-A-vonder-38701210001.JPG"),
                             "Testar antes do uso.",
                             "Entrega disponível",
-                            "Eletricista",
+                            Categoria.ELETRICA,
                             4.8
                     ),
                     new Ferramenta(
@@ -418,7 +419,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://img.lojadomecanico.com.br/IMAGENS/21/221/18641/1653585349626.JPG"),
                             "Manter longe de superfícies úmidas.",
                             "Retirada no local",
-                            "Eletricista",
+                            Categoria.ELETRICA,
                             4.6
                     ),
                     new Ferramenta(
@@ -431,7 +432,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://images-americanas.b2w.io/produtos/7339775083/imagens/teste-de-tomada-vonder-identificador-de-tensao-para-tomadas-110-ou-220-volts/7339775083_1_xlarge.jpg"),
                             "Manter em local seco.",
                             "Entrega disponível",
-                            "Eletricista",
+                            Categoria.ELETRICA,
                             4.9
                     ),
                     new Ferramenta(
@@ -444,7 +445,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://www.agrotama.com.br/upload/novo_produtos/aparadorpodadordecercavivaeletrico600wcorte16mm_102055805.jpg"),
                             "Usar em condições secas.",
                             "Retirada no local",
-                            "Jardinagem",
+                            Categoria.JARDINAGEM,
                             4.7
                     ),
                     new Ferramenta(
@@ -457,7 +458,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://www.sigmatools.com.br/site/wp-content/uploads/2021/09/1000x1000.png"),
                             "Limpar após o uso.",
                             "Entrega disponível",
-                            "Jardinagem",
+                            Categoria.JARDINAGEM,
                             4.8
                     ),
                     new Ferramenta(
@@ -470,7 +471,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://cdn.awsli.com.br/2500x2500/2374/2374926/produto/210441668/tesoura-cerca-viva-e-grama-78330125-tramontina-6-awmpgu.jpg"),
                             "Lubrificar após o uso.",
                             "Retirada no local",
-                            "Jardinagem",
+                            Categoria.JARDINAGEM,
                             4.9
                     ),
                     new Ferramenta(
@@ -483,7 +484,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://chatuba.vtexassets.com/arquivos/ids/168796/Carrinho-de-Mao-Extraforte-Cinza-65L-Tramontina.jpg?v=637420122594670000"),
                             "Evitar sobrepeso.",
                             "Entrega disponível",
-                            "Jardinagem",
+                            Categoria.JARDINAGEM,
                             4.6
                     ),
                     new Ferramenta(
@@ -496,7 +497,7 @@ public class DevelopmentConfig {
                             Collections.singletonList("https://images.tcdn.com.br/img/img_prod/940470/foice_com_cabo_de_madeira_30cm_2637_1_dcadf6d3d1ad7c41e001fde6d2d7af90.jpg"),
                             "Manter o fio afiado.",
                             "Retirada no local",
-                            "Jardinagem",
+                            Categoria.JARDINAGEM,
                             4.8
                     )
                     );
