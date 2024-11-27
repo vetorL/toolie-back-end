@@ -1,9 +1,6 @@
 package com.toolie.back_end;
 
-import com.toolie.back_end.ferramenta.Categoria;
-import com.toolie.back_end.ferramenta.Ferramenta;
-import com.toolie.back_end.ferramenta.FerramentaController;
-import com.toolie.back_end.ferramenta.FerramentaRepository;
+import com.toolie.back_end.ferramenta.*;
 import com.toolie.back_end.usuario.Usuario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -50,7 +47,7 @@ public class FerramentaControllerTests {
                 20,
                 "Centro",
                 Collections.singletonList("fotosURL1"),
-                "Condições adequadas",
+                CondicoesDeUso.BOM,
                 "Retirada no local",
                 Categoria.CONSTRUCAO,
                 4.5
@@ -64,7 +61,7 @@ public class FerramentaControllerTests {
                 50,
                 "Zona Sul",
                 Collections.singletonList("fotosURL2"),
-                "Condições novas",
+                CondicoesDeUso.BOM,
                 "Entrega disponível",
                 Categoria.CONSTRUCAO,
                 4.5
@@ -84,7 +81,7 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$[0].disponibilidade").value("Disponível"))
                 .andExpect(jsonPath("$[0].localizacao").value("Centro"))
                 .andExpect(jsonPath("$[0].fotosURL").value("fotosURL1"))
-                .andExpect(jsonPath("$[0].condicoesDeUso").value("Condições adequadas"))
+                .andExpect(jsonPath("$[0].condicoesDeUso").value("Bom"))
                 .andExpect(jsonPath("$[0].opcoesDeEntrega").value("Retirada no local"))
                 .andExpect(jsonPath("$[0].proprietarioId").value("777"))
 
@@ -94,7 +91,7 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$[1].disponibilidade").value("Disponível"))
                 .andExpect(jsonPath("$[1].localizacao").value("Zona Sul"))
                 .andExpect(jsonPath("$[1].fotosURL").value("fotosURL2"))
-                .andExpect(jsonPath("$[1].condicoesDeUso").value("Condições novas"))
+                .andExpect(jsonPath("$[1].condicoesDeUso").value("Bom"))
                 .andExpect(jsonPath("$[1].opcoesDeEntrega").value("Entrega disponível"))
                 .andExpect(jsonPath("$[0].proprietarioId").value("777"));
     }
@@ -112,7 +109,7 @@ public class FerramentaControllerTests {
                 .andExpect(jsonPath("$.disponibilidade").value("Disponível"))
                 .andExpect(jsonPath("$.localizacao").value("Centro"))
                 .andExpect(jsonPath("$.fotosURL").value("fotosURL1"))
-                .andExpect(jsonPath("$.condicoesDeUso").value("Condições adequadas"))
+                .andExpect(jsonPath("$.condicoesDeUso").value("Bom"))
                 .andExpect(jsonPath("$.opcoesDeEntrega").value("Retirada no local"))
                 .andExpect(jsonPath("$.proprietarioId").value("777"))
         ;
@@ -130,8 +127,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), "Handle with care", "Delivery available", Categoria.CONSTRUCAO, 4.5);
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), "Handle with care", "Pick up only", Categoria.CONSTRUCAO, 4.5);
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), CondicoesDeUso.BOM, "Delivery available", Categoria.CONSTRUCAO, 4.5);
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), CondicoesDeUso.BOM, "Pick up only", Categoria.CONSTRUCAO, 4.5);
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1);
 
         when(ferramentaRepository.searchByTipoFerramenta("Drill")).thenReturn(ferramentas);
@@ -146,8 +143,8 @@ public class FerramentaControllerTests {
     @Test
     void testGetFerramentasByTipoFerramentaWithoutQuery() throws Exception {
         // Given
-        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), "Handle with care", "Delivery available", Categoria.CONSTRUCAO, 4.5);
-        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), "Handle with care", "Pick up only", Categoria.CONSTRUCAO, 4.5);
+        Ferramenta ferramenta1 = new Ferramenta(proprietario, "Drill", "Novo", "Powerful drill", 20, "São Paulo", Collections.singletonList("foto1.jpg"), CondicoesDeUso.BOM, "Delivery available", Categoria.CONSTRUCAO, 4.5);
+        Ferramenta ferramenta2 = new Ferramenta(proprietario, "Hammer", "Usado", "Sturdy hammer", 50, "Rio de Janeiro", Collections.singletonList("foto2.jpg"), CondicoesDeUso.BOM, "Pick up only", Categoria.CONSTRUCAO, 4.5);
         List<Ferramenta> ferramentas = Arrays.asList(ferramenta1, ferramenta2);
 
         when(ferramentaRepository.findAll()).thenReturn(ferramentas);

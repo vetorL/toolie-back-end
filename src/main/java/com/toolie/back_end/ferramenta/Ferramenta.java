@@ -37,7 +37,7 @@ public class Ferramenta {
     @ElementCollection
     private final List<String> fotosURL;
 
-    private final String condicoesDeUso;
+    private final CondicoesDeUso condicoesDeUso;
 
     private final String opcoesDeEntrega;
 

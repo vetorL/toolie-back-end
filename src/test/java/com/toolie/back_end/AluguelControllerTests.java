@@ -3,10 +3,7 @@ package com.toolie.back_end;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.toolie.back_end.aluguel.*;
-import com.toolie.back_end.ferramenta.Categoria;
-import com.toolie.back_end.ferramenta.Disponibilidade;
-import com.toolie.back_end.ferramenta.Ferramenta;
-import com.toolie.back_end.ferramenta.FerramentaRepository;
+import com.toolie.back_end.ferramenta.*;
 import com.toolie.back_end.usuario.Usuario;
 import com.toolie.back_end.usuario.UsuarioRepository;
 import org.junit.jupiter.api.Assertions;
@@ -98,7 +95,7 @@ public class AluguelControllerTests {
                 20,
                 "Centro",
                 Collections.singletonList("fotosURL1"),
-                "Condições adequadas",
+                CondicoesDeUso.BOM,
                 "Retirada no local",
                 Categoria.CONSTRUCAO,
                 4.5

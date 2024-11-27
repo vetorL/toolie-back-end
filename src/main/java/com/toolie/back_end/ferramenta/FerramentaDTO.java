@@ -27,7 +27,7 @@ public class FerramentaDTO {
 
     private List<String> fotosURL;
 
-    private String condicoesDeUso;
+    private CondicoesDeUso condicoesDeUso;
 
     private String opcoesDeEntrega;
 
